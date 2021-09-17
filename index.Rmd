@@ -1,9 +1,9 @@
 --- 
-title: "A GitBook Example for Teaching"
+title: "A GitBook"
 author: "Nikola Sekulovski"
 date: "`r Sys.Date()`"
 documentclass: book
-github-repo: cjvanlissa/gitbook-demo
+github-repo: sekulovskin/gitbook-example
 link-citations: yes
 bibliography:
 - book.bib
@@ -11,6 +11,7 @@ bibliography:
 site: bookdown::bookdown_site
 biblio-style: apalike
 ---
+
 #Chapter 1
 
 This is a test GitBook based on [A GitBook Example for Teaching](https://cjvanlissa.github.io/gitbook-demo/).
