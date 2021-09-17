@@ -3,7 +3,7 @@
 To get your GitBook, you should follow these steps:
 
 1. Go to <https://github.com/cjvanlissa/gitbook-demo>
-2. In the top right of the page, click `Fork`.  
+2. In the top right of the page, click `Fork`  
     This will copy my `gitbook-demo` repository to your GitHub account.  
     ![](./img/settings.png)
 3. My repository is now copied to your account. It is a template repository, which means that you can create a *new repository* based on this one.
