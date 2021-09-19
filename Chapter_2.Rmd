@@ -1,4 +1,4 @@
-# Chapter 2 {label}
+# Small simulation
 
 ## Simulating a sample from a standard normal with `rnorm`.
 
@@ -7,9 +7,9 @@ Simulating a sample of size 1000 from a *standard normal distribution* with $\mu
 x <- rnorm(1000, 0, 1) 
 ```
 
-Plotting a hostogram of the sample and labbeling the plot.
+Plotting a hostogram of the sample and labeling the plot.
 
-```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r nice-fig, fig.cap='Here is a simple plot!', out.width='80%', fig.asp=.75, fig.align='center'}
 hist(x, col = "yellow", main = "Histogram of a sample from a standard normal")
 ```
 

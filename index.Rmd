@@ -12,7 +12,7 @@ site: bookdown::bookdown_site
 biblio-style: apalike
 ---
 
-#Chapter 1
+# Introduction
 
 This is a template GitBook based on [*A GitBook Example for Teaching*](https://cjvanlissa.github.io/gitbook-demo/) and [*bookdown: Authoring Books and Technical Documents with R Markdown*](https://bookdown.org/yihui/bookdown/).
 
