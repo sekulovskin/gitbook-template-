@@ -1,9 +1,9 @@
 --- 
-title: "A GitBook"
+title: "A GitBook template"
 author: "Nikola Sekulovski"
 date: "`r Sys.Date()`"
 documentclass: book
-github-repo: sekulovskin/gitbook-example
+github-repo: sekulovskin/gitbook-template-
 link-citations: yes
 bibliography:
 - book.bib
@@ -14,6 +14,7 @@ biblio-style: apalike
 
 #Chapter 1
 
-This is a test GitBook based on [A GitBook Example for Teaching](https://cjvanlissa.github.io/gitbook-demo/).
+This is a template GitBook based on [*A GitBook Example for Teaching*](https://cjvanlissa.github.io/gitbook-demo/) and [*bookdown: Authoring Books and Technical Documents with R Markdown*](https://bookdown.org/yihui/bookdown/).
+
 
 
