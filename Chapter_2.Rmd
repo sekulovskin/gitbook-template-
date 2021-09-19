@@ -1,0 +1,13 @@
+# Chapter 2 {label}
+
+Simulating a sample of size 1000 from a *standard normal distribution* with $\mu = 0$ and $\sigma = 1$.
+```{r}
+x <- rnorm(1000, 0, 1) 
+```
+
+Plotting a hostogram of the sample and labbeling the plot.
+
+```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
+hist(x, col = "yellow", main = "Histogram of a sample from a standard normal")
+```
+
