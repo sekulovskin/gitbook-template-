@@ -1,5 +1,0 @@
-# Get your GitBook {#getgitbook}
-
-*Nikola:* THIS IS A DELIBERATE CHANGE
-
-
