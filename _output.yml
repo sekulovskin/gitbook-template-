@@ -3,7 +3,7 @@ bookdown::gitbook:
   config:
     toc:
 
-    edit: https://github.com/cjvanlissa/gitbook-demo/edit/master/%s
+    edit: https://github.com/sekulovskin/gitbook-template-/edit/master/%s
     download: ["pdf"]
 bookdown::pdf_book:
   includes:
