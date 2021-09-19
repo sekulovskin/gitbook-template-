@@ -1,5 +1,7 @@
 # Chapter 2 {label}
 
+## Simulating a sample from a standard normal with `rnorm`.
+
 Simulating a sample of size 1000 from a *standard normal distribution* with $\mu = 0$ and $\sigma = 1$.
 ```{r}
 x <- rnorm(1000, 0, 1) 

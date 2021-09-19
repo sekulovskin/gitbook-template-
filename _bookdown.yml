@@ -1,13 +1,8 @@
 book_filename: "gitbook-example"
-rmd_files: ["prerequisites.Rmd",
-            "get_your_gitbook.Rmd",
-            "editing_the_book.Rmd",
-            "figures_tables.Rmd",
-            "examples.Rmd",
-            "open_educational.Rmd",
-            "use_in_course.Rmd",
-            "licenses.Rmd",
-            "references.Rmd"]
+rmd_files: ["index.Rmd",
+            "Chapter_2.Rmd",
+            "Literature.Rmd",
+            "Appendix.Rmd"]
 output_dir: "docs"
 language:
   ui:
