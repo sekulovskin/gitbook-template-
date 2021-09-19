@@ -2,10 +2,7 @@ bookdown::gitbook:
   css: style.css
   config:
     toc:
-      before: |
-        <li><a href="./">A GitBook for Teaching</a></li>
-      after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
     edit: https://github.com/cjvanlissa/gitbook-demo/edit/master/%s
     download: ["pdf"]
 bookdown::pdf_book:
