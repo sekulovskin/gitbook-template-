@@ -59,7 +59,7 @@ results %>%
 
 And finally we can also make a nice plot illustrating everything that we did so far.
 
-```{r}
+```{r, fig.cap= "Here is a plot of the CI's"}
 lims <- aes(ymax = results$Upper, ymin = results$Lower)
 ggplot(results, aes(y=Mean, x=1:100, colour = Covered)) + 
   geom_hline(aes(yintercept = 0)) + 
