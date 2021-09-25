@@ -2,4 +2,5 @@
 
 ## Bayes theorem
 
+$p(\theta | D) = \frac{p(D|\theta) p(\theta)} {p(D)}$
 
