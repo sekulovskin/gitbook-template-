@@ -1,9 +1,10 @@
 # Formulas
 
 ## Bayes theorem
-
+\begin{equation} 
 $p(\theta | D) = \frac{p(D|\theta) p(\theta)} {p(D)}$
-
+\end{equation} 
 ## Normal PDF
-
+\begin{equation} 
 $\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}\right)$
+\end{equation}
