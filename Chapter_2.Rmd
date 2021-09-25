@@ -89,7 +89,7 @@ means <- samples_2 %>%
 ```
 
 And now we plot a histogram of the resulting means:
-```{r}
+```{r, fig.cap= "Histogram of the sampling distribution of the mean"}
 hist(t(means))
 ```
 

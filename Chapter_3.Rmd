@@ -1,4 +1,4 @@
-# Formula
+# Formulas
 
 ## Bayes theorem
 
