@@ -1,9 +1,0 @@
-# Formula
-
-## Bayes theorem
-
-$p(\theta | D) = \frac{p(D|\theta) p(\theta)} {p(D)}$
-
-## Normal distribution
-
-$\frac1{\sqrt{2\pi\sigma^2}}{exp}^\frac{x-\mu}{\sigma}$
