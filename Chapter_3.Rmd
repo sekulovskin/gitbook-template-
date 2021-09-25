@@ -4,3 +4,6 @@
 
 $p(\theta | D) = \frac{p(D|\theta) p(\theta)} {p(D)}$
 
+## Normal PDF
+
+$\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}\right)$

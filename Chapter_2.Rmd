@@ -51,10 +51,10 @@ results <- samples %>%
 
 We can also add a table with the sample statistics of the samples whose CI's do not contain $\mu$.
 
-```{r, fig.cap= "Here is a table of the samples"}
+```{r}
 results %>%
   filter(Covered ==0) %>%
-  kableExtra::kable()
+  kableExtra::kable(caption = "Here is a table of the samples" )
 ```
 
 And finally we can also make a nice plot illustrating everything that we did so far.
