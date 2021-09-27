@@ -138,7 +138,7 @@
 
 \title{A GitBook template}
 \author{Nikola Sekulovski}
-\date{2021-09-25}
+\date{2021-09-27}
 
 \begin{document}
 \maketitle
@@ -319,12 +319,21 @@ And now we plot a histogram of the resulting means:
 \hypertarget{bayes-theorem}{%
 \section{Bayes theorem}\label{bayes-theorem}}
 
-\(p(\theta | D) = \frac{p(D|\theta) p(\theta)} {p(D)}\)
+\begin{equation} 
+p(\theta | D) = \frac{p(D|\theta) p(\theta)} {p(D)}
+\label{eq:bayes}
+\end{equation}
 
 \hypertarget{normal-pdf}{%
 \section{Normal PDF}\label{normal-pdf}}
 
-\(\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}\right)\)
+\begin{equation} 
+f(x) = \frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}\right)
+\label{eq:normal}
+\end{equation}
+
+This is how we refer to equations:
+-see equation \eqref{eq:normal}
 
 \hypertarget{literature}{%
 \chapter*{Literature}\label{literature}}
@@ -334,8 +343,9 @@ And now we plot a histogram of the resulting means:
 \appendix}
 
 
-\hypertarget{something..}{%
-\chapter{Something..}\label{something..}}
+\hypertarget{appendix-a}{%
+\chapter*{Appendix A}\label{appendix-a}}
+\addcontentsline{toc}{chapter}{Appendix A}
 
   \bibliography{book.bib,packages.bib}
 
