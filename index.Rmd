@@ -4,19 +4,22 @@ author: "Nikola Sekulovski"
 date: "`r Sys.Date()`"
 documentclass: book
 github-repo: sekulovskin/gitbook-template-
-link-citations: yes
+link-citations: TRUE
 bibliography:
 - book.bib
 - packages.bib
 site: bookdown::bookdown_site
-biblio-style: apalike
+biblio-style: "apalike"
+
 ---
 
 # Introduction
 
 This is a template GitBook based on [*A GitBook Example for Teaching*](https://cjvanlissa.github.io/gitbook-demo/) and [*bookdown: Authoring Books and Technical Documents with R Markdown*](https://bookdown.org/yihui/bookdown/).
 
-This is how we would reference a book [@xie2015].
+This is how we would reference a book [@xie2015] or @xie.
+
+This is how we would reference articles @gu2018approximated or [@hoijtink2008bayesian].
 
 
 
