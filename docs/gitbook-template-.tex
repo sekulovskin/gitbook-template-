@@ -133,8 +133,6 @@
 \ifluatex
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\usepackage[]{natbib}
-\bibliographystyle{apalike}
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
@@ -172,9 +170,9 @@
 
 This is a template GitBook based on \href{https://cjvanlissa.github.io/gitbook-demo/}{\emph{A GitBook Example for Teaching}} and \href{https://bookdown.org/yihui/bookdown/}{\emph{bookdown: Authoring Books and Technical Documents with R Markdown}}.
 
-This is how we would reference a book \citep{xie2015} or \citet{xie2015}.
+This is how we would reference a book (\protect\hyperlink{ref-xie2015}{Xie, 2015}) or \protect\hyperlink{ref-xie2015}{Xie} (\protect\hyperlink{ref-xie2015}{2015}).
 
-This is how we would reference articles \citet{gu2018approximated} or \citep{hoijtink2008bayesian}.
+This is how we would reference articles \protect\hyperlink{ref-gu2018approximated}{Gu, Mulder, \& Hoijtink} (\protect\hyperlink{ref-gu2018approximated}{2018}) or (\protect\hyperlink{ref-hoijtink2008bayesian}{Hoijtink, Klugkist, \& Boelen, 2008}).
 
 \hypertarget{monte-carlo-simulations}{%
 \chapter{Monte Carlo Simulations}\label{monte-carlo-simulations}}
@@ -364,7 +362,16 @@ This is how we refer to equations:
 \addcontentsline{toc}{chapter}{References}
 
 \hypertarget{refs}{}
-\begin{CSLReferences}{0}{0}
+\begin{CSLReferences}{1}{0}
+\leavevmode\hypertarget{ref-gu2018approximated}{}%
+Gu, X., Mulder, J., \& Hoijtink, H. (2018). Approximated adjusted fractional bayes factors: A general method for testing informative hypotheses. \emph{British Journal of Mathematical and Statistical Psychology}, \emph{71}, 229--261.
+
+\leavevmode\hypertarget{ref-hoijtink2008bayesian}{}%
+Hoijtink, H., Klugkist, I., \& Boelen, P. A. (2008). \emph{Bayesian evaluation of informative hypotheses}. Springer.
+
+\leavevmode\hypertarget{ref-xie2015}{}%
+Xie, Y. (2015). \emph{Dynamic documents with {R} and knitr} (2nd ed.). Boca Raton, Florida: Chapman; Hall/CRC.
+
 \end{CSLReferences}
 
 \hypertarget{appendix-appendix}{%
@@ -374,7 +381,5 @@ This is how we refer to equations:
 \hypertarget{appendix-a}{%
 \chapter*{Appendix A}\label{appendix-a}}
 \addcontentsline{toc}{chapter}{Appendix A}
-
-  \bibliography{book.bib,packages.bib}
 
 \end{document}

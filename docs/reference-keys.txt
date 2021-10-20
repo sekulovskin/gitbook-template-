@@ -1,0 +1,12 @@
+tab:unnamed-chunk-6
+fig:unnamed-chunk-7
+fig:unnamed-chunk-10
+eq:bayes
+eq:normal
+introduction
+monte-carlo-simulations
+the-confidence-interval
+the-central-limit-theorem
+equations
+bayes-theorem
+normal-pdf
