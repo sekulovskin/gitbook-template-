@@ -6,7 +6,7 @@ bookdown::gitbook:
     toc:
       before: |
         <li><a href="./">A Gitbook template</a></li>
-    download: ["pdf", "epub"]
+    download: ["pdf"]
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
@@ -14,5 +14,3 @@ bookdown::pdf_book:
   citation_package: none
   pandoc_args: [ "--csl", "apa-no-doi-no-issue.csl" ]
   keep_tex: yes
-bookdown::epub_book:
-  pandoc_args: [ "--csl", "apa-no-doi-no-issue.csl" ]
