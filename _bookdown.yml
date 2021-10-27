@@ -2,6 +2,8 @@ book_filename: "gitbook-template-"
 rmd_files: ["index.Rmd",
             "Chapter_2.Rmd",
             "Chapter_3.Rmd",
+            "bain_introduction.Rmd",
+            "bain_examples.Rmd",
             "Literature.Rmd",
             "Appendix.Rmd"]
 output_dir: "docs"

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>(bain) Introduction to bain | A GitBook template</title>
+  <meta name="description" content="(bain) Introduction to bain | A GitBook template" />
+  <meta name="generator" content="bookdown 0.24.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="(bain) Introduction to bain | A GitBook template" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="sekulovskin/gitbook-template-" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="(bain) Introduction to bain | A GitBook template" />
+  
+  
+  
+
+<meta name="author" content="Nikola Sekulovski" />
+
+
+<meta name="date" content="2021-10-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="equations-picture.html"/>
+<link rel="next" href="examples-using-bain.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Gitbook template</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="monte-carlo-simulations.html"><a href="monte-carlo-simulations.html"><i class="fa fa-check"></i><b>2</b> Monte Carlo Simulations</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="monte-carlo-simulations.html"><a href="monte-carlo-simulations.html#the-confidence-interval"><i class="fa fa-check"></i><b>2.1</b> The Confidence Interval</a></li>
+<li class="chapter" data-level="2.2" data-path="monte-carlo-simulations.html"><a href="monte-carlo-simulations.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>2.2</b> The Central Limit Theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="equations-picture.html"><a href="equations-picture.html"><i class="fa fa-check"></i><b>3</b> Equations &amp; Picture</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="equations-picture.html"><a href="equations-picture.html#bayes-theorem"><i class="fa fa-check"></i><b>3.1</b> Bayes’ theorem</a></li>
+<li class="chapter" data-level="3.2" data-path="equations-picture.html"><a href="equations-picture.html#normal-pdf"><i class="fa fa-check"></i><b>3.2</b> Normal PDF</a></li>
+<li class="chapter" data-level="3.3" data-path="equations-picture.html"><a href="equations-picture.html#picture"><i class="fa fa-check"></i><b>3.3</b> Picture</a></li>
+</ul></li>
+<li><a href="bain-introduction-to-bain.html#bain-introduction-to-bain">(bain) Introduction to <code>bain</code></a>
+<ul>
+<li class="chapter" data-level="3.4" data-path="bain-introduction-to-bain.html"><a href="bain-introduction-to-bain.html"><i class="fa fa-check"></i><b>3.4</b> Available tutorials</a></li>
+<li class="chapter" data-level="3.5" data-path="bain-introduction-to-bain.html"><a href="bain-introduction-to-bain.html#usage"><i class="fa fa-check"></i><b>3.5</b> Usage</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="bain-introduction-to-bain.html"><a href="bain-introduction-to-bain.html#arguments"><i class="fa fa-check"></i><b>3.5.1</b> Arguments</a></li>
+<li class="chapter" data-level="3.5.2" data-path="bain-introduction-to-bain.html"><a href="bain-introduction-to-bain.html#using-bain-with-a-lm-or-t_test-object"><i class="fa fa-check"></i><b>3.5.2</b> Using <code>bain</code> with a <code>lm</code> or <code>t_test</code> object</a></li>
+<li class="chapter" data-level="3.5.3" data-path="bain-introduction-to-bain.html"><a href="bain-introduction-to-bain.html#using-bain-with-a-lavaan-object"><i class="fa fa-check"></i><b>3.5.3</b> Using <code>bain</code> with a <code>lavaan</code> object</a></li>
+<li class="chapter" data-level="3.5.4" data-path="bain-introduction-to-bain.html"><a href="bain-introduction-to-bain.html#using-bain-with-a-named-vector"><i class="fa fa-check"></i><b>3.5.4</b> Using <code>bain</code> with a named vector</a></li>
+<li class="chapter" data-level="3.5.5" data-path="bain-introduction-to-bain.html"><a href="bain-introduction-to-bain.html#the-specification-of-hypotheses"><i class="fa fa-check"></i><b>3.5.5</b> The specification of <code>hypotheses</code></a></li>
+<li class="chapter" data-level="3.5.6" data-path="bain-introduction-to-bain.html"><a href="bain-introduction-to-bain.html#output"><i class="fa fa-check"></i><b>3.5.6</b> Output</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="examples-using-bain.html"><a href="examples-using-bain.html"><i class="fa fa-check"></i><b>4</b> Examples using <code>bain</code></a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="" data-path="appendix-a.html"><a href="appendix-a.html"><i class="fa fa-check"></i>Appendix A</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A GitBook template</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="bain-introduction-to-bain" class="section level1 unnumbered">
+<h1>(bain) Introduction to <code>bain</code></h1>
+<p><code>bain</code> is an acronym for “Bayesian informative hypotheses evaluation.”
+It uses the Bayes factor <span class="citation">(<a href="references.html#ref-kass1995bayes" role="doc-biblioref">Kass &amp; Raftery, 1995</a>)</span> to evaluate hypotheses specified using <em>equality</em> and <em>inequality</em> constraints among (linear combinations of) parameters in a wide range of statistical models.</p>
+<div id="available-tutorials" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Available tutorials</h2>
+<p>Two tutorials are retrievable from the <code>bain</code> <a href="https://informative-hypotheses.sites.uu.nl/software/bain/">website</a> under the section <strong>Tutorials</strong>.</p>
+<p>The first introducing Bayesian evaluation of informative hypotheses is provided by <span class="citation"><a href="references.html#ref-e575e990fdef4c469a1c19a210d58e2f" role="doc-biblioref">Hoijtink, Mulder, van Lissa, &amp; Gu</a> (<a href="references.html#ref-e575e990fdef4c469a1c19a210d58e2f" role="doc-biblioref">2019</a>)</span>. By reading the tutorial in combination with executing the analyses contained in <code>easyBFtutorial.R</code> and <code>BFtutorial.R</code> (available on the abovementioned website) you will quickly learn the basics of Bayesian hypothesis evaluation.</p>
+<p>The second containing introduction to Bayesian evaluation of informative hypotheses in the context of structural equation models is provided by Van Lissa, C., Gu, X., Mulder, J., Rosseel, Y., van Zundert, C. and Hoijtink, H. (2020), Structural Equation Modelling, 28, 292-301<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p><strong>Users are
+advised to read these tutorials and this vignette before using <code>bain</code></strong>.</p>
+<p>An overview of all other relevant papers concearning informative hypotheses testing and the package <code>bain</code> can be found <a href="https://informative-hypotheses.sites.uu.nl/publications/">here</a>.</p>
+</div>
+<div id="usage" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Usage</h2>
+<p>This is how a general call to <code>bain</code> looks like:</p>
+<p><code>results  &lt;- bain(x, hypothesis, fraction = 1, ...)</code></p>
+<div id="arguments" class="section level3" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Arguments</h3>
+<p><code>x</code>
+An R object containing the outcome of a statistical analysis. Currently, the following objects can be processed:</p>
+<ol style="list-style-type: decimal">
+<li><code>t_test()</code> objects (Student’s t-test, Welch’s t-test, paired samples t-test, one-group t-test, equivalence test). Note that, <code>t_test</code> can be used in the same way as <code>t.test</code>.</li>
+<li><code>lm()</code> objects (ANOVA, ANCOVA, multiple regression).</li>
+<li><code>lavaan</code> objects generated with the <code>sem()</code>, <code>cfa()</code>, and
+<code>growth</code> functions.</li>
+<li>A named vector containing the estimates resulting from a statistical analysis. Using this option triggers the <code>bain.default()</code> method. Note that, named means that each estimate has to be named such that it can be referred to in hypotheses.</li>
+<li>Wrapper functions for repeated measures ANOVA(…) and linear two-level models built with <code>lmer</code> (TBA when finished)</li>
+</ol>
+<p><code>hypothesis</code> A character string containing the informative hypotheses to evaluate
+(see below the section on <strong>“Specification of Hypotheses”</strong>).</p>
+<p><code>fraction = 1</code> A number representing the fraction of information in the data used to construct the prior distribution (see, for example, <span class="citation"><a href="references.html#ref-gu2018approximated" role="doc-biblioref">Gu, Mulder, &amp; Hoijtink</a> (<a href="references.html#ref-gu2018approximated" role="doc-biblioref">2018</a>)</span>). The default value 1 denotes the minimal fraction, 2 denotes twice the minimal fraction, etc. The examples in the next chapter show how the <code>fraction</code> can be employed to execute a sensitivity analysis. See also <span class="citation"><a href="references.html#ref-e575e990fdef4c469a1c19a210d58e2f" role="doc-biblioref">Hoijtink, Mulder, van Lissa, &amp; Gu</a> (<a href="references.html#ref-e575e990fdef4c469a1c19a210d58e2f" role="doc-biblioref">2019</a>)</span> for more details.</p>
+<p><code>...</code> Additional arguments (see next chapter).</p>
+</div>
+<div id="using-bain-with-a-lm-or-t_test-object" class="section level3" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Using <code>bain</code> with a <code>lm</code> or <code>t_test</code> object</h3>
+<p>The following steps need to be executed:</p>
+<ol style="list-style-type: decimal">
+<li><code>x &lt;- lm()</code> or <code>x &lt;- t_test()</code>. Execute an analysis with
+<code>lm</code> or <code>t_test</code>. See the Examples section below for a complete elaboration
+of the
+calls to <code>lm</code> and <code>t_test</code> that can be processed by <code>bain</code>.
+Note that, <code>lm</code> and <code>t_test</code> will apply list-wise deletion if there
+are cases with missing values in the variables used.</li>
+<li>If <code>lm()</code> is used, display the estimates and their names using the command <code>coef(x)</code>. (Unique abbreviations of) the names will be used to specify <code>hypotheses</code>. If <code>t_test()</code> is used, hypotheses have to be specified using the names <code>x</code>, <code>y</code>, and <code>difference</code> (see Examples 1a throught 1e which can be found below).</li>
+<li><code>set.seed(seed)</code>. Set <code>seed</code> equal to an integer
+number to create a repeatable random number sequence. <code>bain</code> uses sampling to compute Bayes factors and posterior model probabilities. It is therefore recommended to run analyses with two different seeds to ensure stability of the results.</li>
+<li><code>results &lt;- bain(x,hypotheses,fraction = 1)</code> or <code>results &lt;- bain(x,hypotheses,fraction = 1,standardize = FALSE)</code>. The first call to
+<code>bain</code> is used
+in case of <code>lm</code> implementations of ANOVA, ANCOVA, and <code>t_test</code>. The
+second call to <code>bain</code> is used in case of <code>lm</code> implementations of
+multiple regression. With <code>standardize = TRUE</code> hypotheses with respect
+to standardized regression coefficients are evaluated. With <code>standardize = FALSE</code> hypotheses with respect to unstandardized regression coefficients
+are evaluated. <code>fraction = 1</code>represents the fraction of information in the data used to construct the prior distribution. The default value 1 denotes the minimal fraction, 2 denotes twice the minimal fraction, etc. Example 2d. below shows how <code>fraction</code> can be employed to execute a sensitivity analysis. See also Hoijtink, Mulder, van Lissa, and Gu, 2019).</li>
+<li><code>print(results)</code> Print the results of an analysis with
+<code>bain</code>.</li>
+<li><code>summary(results, ci=0.95)</code> Present estimates and credibility intervals for the parameters used to specify the <code>hypotheses</code>. <code>ci</code> can be used to specify the confidence level of the credibility intervals.</li>
+</ol>
+</div>
+<div id="using-bain-with-a-lavaan-object" class="section level3" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Using <code>bain</code> with a <code>lavaan</code> object</h3>
+<p>The following steps need to be executed:</p>
+<ol style="list-style-type: decimal">
+<li><code>x &lt;- sem()</code> or <code>x &lt;- cfa()</code> or <code>x &lt;- growth()</code>.
+Execute an analysis with the sem, cfa, or growth functions
+implemented in <a href="https://lavaan.ugent.be"><code>lavaan</code></a>.
+Note that, by default,
+<code>lavaan</code> will apply list-wise deletion if there are cases with
+missing values in the variables used. An imputation based method
+for dealing with missing values tailored to Bayesian hypothesis
+evaluation is illustrated in Section 4 “Examples Using
+a Named Vector” in Example h. (based on Hoijtink, Gu, Mulder,
+and Rosseel, 2019). If an analysis with <code>lavaan</code> is executed using <code>missing = "fiml"</code> the sample size is not corrected for the presence of missing values. This will affect (bias) the evaluation of hypotheses specified using (about) equality constraints.<br />
+</li>
+<li>Specify a <code>lavaan</code> model using the <code>model &lt;- ...</code> command. In case
+of multiple group models, only models <strong>without</strong> between group
+restrictions can be processed by <code>bain</code> with a <code>lavaan</code> object
+as input.</li>
+<li>Display the estimates and their names using the command <code>coef(x)</code>.
+Only parameters who’s names contain <code>~</code> (regression coefficients),
+<code>~1</code> (intercepts), or <code>=~</code> (factor loadings) can be used in the
+specification of hypotheses. (Unique abbreviations of) the names
+can be used to specify <code>hypotheses</code>. For multiple group analyses
+the names have to end with a group label <code>.grp</code>. Group labels
+can be assigned using commands like
+<code>sesamesim$sex &lt;- factor(sesamesim$sex, labels = c("boy", "girl"))</code>.
+If in a <code>lavaan</code> model parameters are labeled, e.g., as in
+<code>model &lt;- 'age ~ c(a1, a2)*peabody + c(b1, b2)*1</code> then the labels
+have to be used in the specification of hypotheses.</li>
+<li><code>set.seed(seed)</code>. Set <code>seed</code> equal to an integer
+number to create a repeatable random number sequence. <code>bain</code> uses sampling to compute Bayes factors and posterior model probabilities. It is therefore recommended to run analyses with two different seeds to ensure stability of the results.</li>
+<li><code>results &lt;- bain(x,hypotheses,fraction = 1,standardize = FALSE)</code>.
+With <code>standardize = TRUE</code> hypotheses with respect
+to standardized coefficients are evaluated. With <code>standardize = FALSE</code> hypotheses with respect to unstandardized coefficients
+are evaluated. <code>fraction = 1</code> represents the fraction of information in the data used to construct the prior distribution. The default value 1 denotes the minimal fraction, 2 denotes twice the minimal fraction, etc. Example 2d. below shows how <code>fraction</code> can be employed to execute a sensitivity analysis. See also Hoijtink, Mulder, van Lissa, and Gu, 2019).</li>
+<li><code>print(results)</code> Print the results of an analysis with
+<code>bain</code>.</li>
+<li><code>summary(results, ci=0.95)</code> Present estimates and credibility intervals for the parameters used to specify the <code>hypotheses</code>. <code>ci</code> can be used to specify the confidence level of the credibility intervals.</li>
+</ol>
+</div>
+<div id="using-bain-with-a-named-vector" class="section level3" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> Using <code>bain</code> with a named vector</h3>
+<p>The following steps need to be executed:</p>
+<ol style="list-style-type: decimal">
+<li>Execute a statistical analysis.</li>
+</ol>
+<p>In case of a single group analysis, the
+following information has to be extracted from the statistical analysis and
+supplied to <code>bain</code>:</p>
+<ol style="list-style-type: lower-alpha">
+<li>A vector containing estimates of the parameters
+used to specify <code>hypotheses</code>;</li>
+<li>A list containing the covariance matrix of these parameters; and,</li>
+<li>The sample size used for estimation of the parameters. Note that,
+due to missing values this sample size may be smaller than the total sample
+size.</li>
+</ol>
+<p>In case of a multiple group
+analysis, the following information has to be extracted from the statistical
+analysis and supplied to <code>bain</code>:</p>
+<ol style="list-style-type: lower-alpha">
+<li>A vector containing estimates of the group specific
+parameters possibly augmented with the
+estimates of parameters that are shared by the groups. The structure
+of this vector is
+[parameters of group 1, parameters of group 2, …, the parameters that
+are shared by the groups];</li>
+<li>A list containing, per group, the covariance
+matrix of the parameters corresponding to the group at hand and, possibly,
+the augmented parameters. In the rows and columns of each covariance matrix
+the parameters of the group at hand come first, possibly followed by the
+augmented parameters.</li>
+<li>Per group the sample size used for estimation of the parameters. Note that,
+due to missing values this sample size may be smaller than the total sample
+size per group.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>Assign names to the estimates
+using <code>names(estimates)&lt;-c()</code>. Note that, <code>names</code> is a
+character vector containing new names for the estimates in <code>estimates</code>.
+Each name has to start with a letter, and may consist of “letters,”
+“numbers,” “<code>.</code>” “<code>_</code>,” “<code>:</code>” “<code>~</code>,” “<code>=~</code>,” and “<code>~1</code>.”
+These names are
+used to specify <code>hypotheses</code>
+(see below). An example is <code>names &lt;- c("a", "b", "c")</code>.</li>
+<li><code>set.seed(seed)</code>. Set <code>seed</code> equal to an integer
+number to create a repeatable random number sequence. <code>bain</code> uses sampling to compute Bayes factors and posterior model probabilities. It is therefore recommended to run analyses with two different seeds to ensure stability of the results.</li>
+<li><code>results &lt;- bain(estimates, hypotheses, n=., Sigma=., group_parameters = 2, joint_parameters = 0, fraction = 1)</code>
+executes <code>bain</code> with the
+following arguments:</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><code>estimates</code> A named vector with parameter estimates.</li>
+<li><code>hypotheses</code> A character string containing the informative
+hypotheses to evaluate (the specification is elaborated below).</li>
+<li><code>n</code> A vector containing the sample size of each group in the
+analysis. See, Hoijtink, Gu, and Mulder (2019), for an elaboration of the
+difference between one and multiple group analyses. A multiple group
+analysis is required when group specific parameters are used to formulate
+<code>hypotheses</code>. Examples are the Student’s and Welch’s t-test, ANOVA, and
+ANCOVA. See the Examples section for elaborations of the specification of
+multiple group analyses when a named vector is input for <code>bain</code>.</li>
+<li><code>Sigma</code> A list of covariance matrices. In case of one group
+analyses the list contains one covariance matrix. In case of multiple group
+analyses the list contains one covariance matrix for each group. See the
+Examples section and Hoijtink, Gu, and Mulder (2019) for further instructions.</li>
+<li><code>group_parameters</code> The number of group specific parameters. In,
+for example, an ANOVA with three groups, <code>estimates</code> will contain three
+sample means, <code>group_parameters = 1</code> because each group is characterized
+by one mean, and <code>joint_parameters = 0</code> because there are no parameters
+that apply to each of the groups. In, for example, an ANCOVA with three
+groups and two covariates, <code>estimates</code> will contain five parameters
+(first the three adjusted means, followed by the regression coefficients
+of the two covariates),
+<code>group_parameters = 1</code> because each group is characterized by one
+adjusted mean, and <code>joint_parameters = 2</code> because there are two
+regression coefficients that apply to each group. In, for example, a repeated
+measures design with four repeated measures and two groups (a between factor
+with two levels and a within factor with four levels) <code>estimates</code> will
+contain eight means (first the four for group 1, followed by the four
+for group 2), <code>group_parameters = 4</code>
+because each group is characterized by four means and <code>joint_parameters = 0</code> because there are no parameters that apply to each of the groups.</li>
+<li><code>joint_parameters</code> In case of one group <code>joint_parameters = 0</code>. In case of two or more groups, the number of parameters in
+<code>estimates</code> shared by the groups. In, for example, an ANCOVA, the number
+of <code>joint_parameters</code> equals the number of covariates.</li>
+<li><code>fraction = 1</code> A number representing the fraction of information in the data used to construct the prior distribution. The default value 1 denotes the minimal fraction, 2 denotes twice the minimal fraction, etc. Example 2d. below shows how <code>fraction</code> can be employed to execute a sensitivity analysis. See also Hoijtink, Mulder, van Lissa, and Gu, 2019).</li>
+</ol>
+<ol start="5" style="list-style-type: decimal">
+<li><code>print(results)</code> Print the results of an analysis with
+<code>bain</code>.</li>
+<li><code>summary(results, ci=0.95)</code> Present estimates and credibility intervals for the parameters used to specify the <code>hypotheses</code>. <code>ci</code> can be used to specify the confidence level of the credibility intervals.</li>
+</ol>
+</div>
+<div id="the-specification-of-hypotheses" class="section level3" number="3.5.5">
+<h3><span class="header-section-number">3.5.5</span> The specification of <code>hypotheses</code></h3>
+<p><code>hypotheses</code> is a character string that specifies which informative
+hypotheses have to be evaluated. A simple example is <code>hypotheses &lt;- "a &gt; b &gt; c; a = b = c;"</code> which specifies two hypotheses using three estimates with
+names “a,” “b,” and “c,” respectively.</p>
+<p>The hypotheses specified have to adhere to the following rules <strong><code>bain</code> may still run if you
+deviate from the rules, however, the output will be nonsense</strong>:</p>
+<ul>
+<li>When using <code>bain</code> with a <code>lm</code> or <code>t_test</code> or <code>lavaan</code> object,
+(unique abbreviations of) the names
+displayed by <code>coef(x)</code> have to be used (but see the section “Using bain
+with a lavaan object” for additional instructions if multiple group
+analyses are executed and/or parameters are labeled). If,
+for example, the names are <code>cat</code> and <code>dog</code>, <code>c</code>
+and <code>d</code> would be unique abbreviations. If, for example, the names are <code>cato</code>
+and <code>cata</code> the whole
+names have to be used.</li>
+<li>When using <code>bain</code> with a named vector, parameters are referred to using
+the names specified in <code>names()</code>.</li>
+<li>Linear combinations of parameters must be specified adhering to the
+following rules:</li>
+</ul>
+<ol style="list-style-type: lower-alpha">
+<li><p>Each parameter name is used at most once.</p></li>
+<li><p>Each parameter name may or may not be pre-multiplied with a number.</p></li>
+<li><p>A constant may be added or subtracted from each parameter name.</p></li>
+<li><p>A linear combination can also be a single number.</p>
+<p>Examples are: <code>3 * a + 5</code>; <code>a + 2 * b + 3 * c - 2</code>; <code>a - b</code>; and <code>5</code>.</p></li>
+</ol>
+<ul>
+<li>(Linear combinations of) parameters can be constrained using &lt;, &gt;, and
+=. For example, <code>a &gt; 0</code> or
+<code>a &gt; b = 0</code> or <code>2 * a &lt; b + c &gt; 5</code>.</li>
+<li>The ampersand <code>&amp;</code> can be used to combine different parts of a hypothesis.
+For example, <code>a &gt; b &amp; b &gt; c</code> which is equivalent to <code>a &gt; b &gt; c</code> or
+<code>a &gt; 0 &amp; b &gt; 0 &amp; c &gt; 0</code>.</li>
+<li>Sets of (linear combinations of) parameters subjected to the same
+constraints can be specified using (). For
+example, <code>a &gt; (b,c)</code> which is equivalent to <code>a &gt; b &amp; a &gt; c</code>.</li>
+<li>The specification of a hypothesis is completed by typing ; For example,
+<code>hypotheses &lt;- "a &gt; b &gt; c; a = b = c;"</code>, specifies two hypotheses.</li>
+<li>Hypotheses have to be compatible, non-redundant and possible. What
+these terms mean will be elaborated below.</li>
+</ul>
+<p><strong>The set of hypotheses has to be compatible.</strong> For the statistical
+background of this requirement see Gu, Mulder, Hoijtink (2019). Usually the
+sets of hypotheses specified by researchers are compatible, and if not,
+<code>bain</code> will return an error message. The following steps can be used to
+determine if a set of hypotheses is compatible:</p>
+<ol style="list-style-type: decimal">
+<li>Replace a range constraint, e.g., <code>1 &lt; a1 &lt; 3</code>, by an equality
+constraint in which the parameter involved is equated to the midpoint of the
+range, that is, <code>a1 = 2</code>.</li>
+<li>Replace in each hypothesis the &lt; and &gt; by =. For example,
+<code>a1 = a2&gt; a3 &gt; a4</code> becomes <code>a1 = a2 = a3 = a4</code>.</li>
+<li>The hypotheses are compatible if there is at least one solution to the
+resulting set of equations. For the two hypotheses considered under 1. and
+2., the solution is <code>a1 = a2 = a3 = a4 = 2</code>. An example of two non-compatible
+hypotheses is <code>hypotheses &lt;- "a = 0; a &gt; 2;"</code> because there is no
+solution to the equations <code>a=0</code> and <code>a=2</code>.</li>
+</ol>
+<p><strong>Each hypothesis in a set of hypotheses has to be non-redundant.</strong> A
+hypothesis is redundant if it can also be specified with fewer constraints.
+For example, <code>a = b &amp; a &gt; 0 &amp; b &gt; 0</code> is redundant because it can also be
+specified as <code>a = b &amp; a &gt; 0</code>. <code>bain</code> will work correctly if
+hypotheses specified using only &lt; and &gt; are redundant. <code>bain</code> will
+return an error message if hypotheses specified using at least one = are
+redundant.</p>
+<p><strong>Each hypothesis in a set of hypotheses has to be possible.</strong> An
+hypothesis is impossible if estimates in agreement with the hypothesis do not
+exist. For example: values for <code>a, b, c</code> in agreement with <code>a &gt; b &gt; c &amp; a &lt; c</code> do not exist. It is the responsibility of the user to ensure that the
+hypotheses specified are possible. If not, <code>bain</code> will either return an
+error message or render an output table containing <code>Inf</code>’s.</p>
+</div>
+<div id="output" class="section level3" number="3.5.6">
+<h3><span class="header-section-number">3.5.6</span> Output</h3>
+<p>The commands <code>bain()</code> or <code>results&lt;-bain()</code> followed by
+<code>results</code> or <code>print(results)</code> will render the default (most
+important) output from <code>bain</code>. These concern for each hypothesis
+specified in <code>hypotheses</code> the fit, complexity, Bayes factor versus
+the unconstrained hypothesis, Bayes factor versus its
+complement, posterior model probability (based on equal prior model
+probabilities) excluding the unconstrained hypothesis, posterior model
+probability including the unconstrained hypothesis, and posterior model
+probability of each hypothesis specified and their joint complement.
+Note that, all the posterior model probabilities are computed from
+the Bayes factors of each hypothesis versus the unconstrained hypothesis.
+In Hoijtink, Mulder,
+van Lissa, and Gu (2019) it is elaborated how these quantities
+(and the other
+output presented below) should be interpreted. Additionally, using
+<code>summary(results, ci=0.95)</code>, a descriptives matrix can be obtained
+in which for each estimate, the name, the value, and a 95% central
+credibility interval is presented.</p>
+<p>The following commands can be used to
+retrieve the default and additional information from the <code>bain</code> output
+object:</p>
+<ul>
+<li><code>results$fit</code> renders the default output, <code>results$fit$Fit</code>
+contains only the column containing the fit of each hypothesis. In the last
+command <code>Fit</code> can be replaced by <code>Com</code>, <code>BF</code>, <code>BF.u</code>, <code>BF.c</code>, <code>PMPa</code>,
+<code>PMPb</code>, <code>PMPc</code> to obtain the information in the corresponding columns of the
+default output. Note that, in the columns <code>BF</code> and <code>BF.c</code> the Bayes factor of the
+hypothesis at hand versus its complement is displayed. In the column <code>BF.u</code> the
+Bayes factor of the hypothesis at hand versus the unconstrained hypothesis is
+displayed. <code>PMPa</code> renders the posterior model probabilities (based on equal
+prior model probabilities) of the hypotheses specified. <code>PMPb</code> renders
+the posterior model probabilities (based on equal
+prior model probabilities) of the hypotheses specified plus the unconstrained
+hypothesis. <code>PMPc</code> renders the posterior model probabilities (based on equal
+prior model probabilities) of the hypotheses specified plus the complement of
+the union of these hypotheses. If, in the latter case, the complexity of the
+complement of the union of all hypotheses specified is smaller than .05, the
+hypotheses specified (almost) completely cover the parameter space. In this
+case <code>PMPc</code> is not provided and instead <code>PMPa</code> should be used.</li>
+<li><code>results$BFmatrix</code> contains the matrix containing the mutual Bayes
+factors of the hypotheses specified in <code>hypotheses</code>.</li>
+<li><code>results$b</code> contains for each of the groups in the analysis the
+fraction of information of the data in the group at hand used to specify the
+covariance matrix of the prior distribution.</li>
+<li><code>results$prior</code> contains the covariance matrix of the prior
+distribution.</li>
+<li><code>results$posterior</code> contains the covariance matrix of the
+posterior distribution.</li>
+<li><code>results$call</code> displays the call to <code>bain</code>.</li>
+<li><code>results$model</code> displays the named vector or the R object that is input to <code>bain</code>.</li>
+<li><code>results$n</code> displays the sample sizes per group.</li>
+<li><code>results$independent_restrictions</code> displays the number of
+independent constraints in the set of hypotheses under consideration. Note that,
+in Gu, Mulder, and Hoijtink (2018) en Hoijtink, Gu, and Mulder (2019) the
+definition given was misprinted (besides R and S also r and s should have been
+added to the definition).</li>
+<li><code>results$fit$Fit_eq</code> displays the fit of the equality constrained
+part of each hypothesis. Replacing <code>Fit_eq</code> by <code>Fit_in</code>, renders
+the fit of the inequality constrained part of an hypothesis conditional on
+the fit of the equality constrained part. <code>Com_eq</code>, and <code>Com_in</code>,
+respectively, are the complexity counterparts of <code>Fit_eq</code>, and
+<code>Fit_in</code>.</li>
+</ul>
+<p>Note that, if you have specified two hypotheses that both have a small
+<code>BF.u</code> (close to zero), then there is no support in the data for these
+hypotheses. In these cases the corresponding entry in <code>results$BFmatrix</code>
+(the Bayes factor comparing both hypotheses) is very unstable and should
+only be interpreted if repeated analyses using different seeds
+(see <code>set.seed()</code>) render about the same results.</p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Users are
+advised to read these tutorials and this vignette before using <code>bain</code>.<a href="bain-introduction-to-bain.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="equations-picture.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="examples-using-bain.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["gitbook-template-.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

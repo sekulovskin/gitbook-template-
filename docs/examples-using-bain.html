@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Appendix A | A GitBook template</title>
-  <meta name="description" content="Appendix A | A GitBook template" />
+  <title>Chapter 4 Examples using bain | A GitBook template</title>
+  <meta name="description" content="Chapter 4 Examples using bain | A GitBook template" />
   <meta name="generator" content="bookdown 0.24.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Appendix A | A GitBook template" />
+  <meta property="og:title" content="Chapter 4 Examples using bain | A GitBook template" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="sekulovskin/gitbook-template-" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Appendix A | A GitBook template" />
+  <meta name="twitter:title" content="Chapter 4 Examples using bain | A GitBook template" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="references.html"/>
-
+<link rel="prev" href="an-introduction-to-bain.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -206,24 +206,62 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="appendix-a" class="section level1 unnumbered">
-<h1>Appendix A</h1>
+<div id="examples-using-bain" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Examples using <code>bain</code></h1>
+<p>Note that, each of the examples given below can be run by
+1) copy pasting them into the Source screen of <code>RStudio</code>.
+2) by highlighting them followed by <code>ctrl-enter</code> or <code>cmd-enter</code>.</p>
+<p>Unless indicated otherwise, the examples that follow below use a simulated
+data set inspired by the Sesame Street data set from:
+<span class="citation"><a href="references.html#ref-stevens1996applied" role="doc-biblioref">Stevens</a> (<a href="references.html#ref-stevens1996applied" role="doc-biblioref">1996</a>)</span>. This data set is included in the
+<code>bain</code> package. The variables contained in sesamesim are subsequently:</p>
+<ul>
+<li>sex (1 = boy, 2 = girl) of the child</li>
+<li>site (1 = disadvantaged inner city, 2 = advantaged suburban , 3 =
+advantaged rural,
+4 = disadvantaged rural, 5 = disadvantaged Spanish speaking) from which
+the child originates</li>
+<li>setting (1 = at home, 2 = at school) in which the child watches sesame
+street</li>
+<li>age (in months) of the child</li>
+<li>viewenc (0 = no, 1 = yes), whether or not the child is encouraged to
+watch Sesame Street</li>
+<li>peabody (mental age) score of the child (higher score is higher mental
+age)</li>
+<li>prenumb (score on a numbers test before watching Sesame Street for a
+year)</li>
+<li>postnumb (score on a numbers test after watching Sesame Street for a
+year)</li>
+<li>funumb (follow up numbers test score measured one year after postnumb)</li>
+<li>Bb Knowledge of body parts before</li>
+<li>Bl Knowledge of letters before</li>
+<li>Bf Knowledge of forms before</li>
+<li>Bn Knowledge of numbers before</li>
+<li>Br Knowledge of relations before</li>
+<li>Bc Knowledge of classifications before</li>
+<li>Ab Knowledge of body parts after</li>
+<li>Al Knowledge of letters after</li>
+<li>Af Knowledge of forms after</li>
+<li>An Knowledge of numbers after</li>
+<li>Ar Knowledge of relations after</li>
+<li>Ac Knowledge of classifications after</li>
+</ul>
+<p>The examples that follow below are organized in four categories:</p>
+<ol style="list-style-type: decimal">
+<li>running <code>bain</code> with a <code>t_test</code> object</li>
+<li>running <code>bain</code> with a <code>lm</code> object</li>
+<li>running <code>bain</code> with a <code>lavaan</code> object</li>
+<li>running bain with a named vector</li>
+</ol>
 
 </div>
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="references.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="an-introduction-to-bain.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

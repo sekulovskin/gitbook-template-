@@ -1,0 +1,50 @@
+# Examples using `bain` 
+
+Note that, each of the examples given below can be run by 
+1) copy pasting them into the Source screen of `RStudio`. 
+2) by highlighting them followed by `ctrl-enter` or `cmd-enter`.
+
+Unless indicated otherwise, the examples that follow below use a simulated
+data set inspired by the Sesame Street data set from:
+@stevens1996applied. This data set is included in the
+`bain` package. The variables contained in sesamesim are subsequently:
+
+* sex (1 = boy, 2 = girl) of the child
+* site (1 = disadvantaged inner city, 2 = advantaged suburban , 3 =
+advantaged rural,
+4 = disadvantaged rural, 5 = disadvantaged Spanish speaking) from which
+the child originates
+* setting (1 = at home, 2 = at school) in which the child watches sesame
+street
+* age (in months) of the child
+* viewenc (0 = no, 1 = yes), whether or not the child is encouraged to
+watch Sesame Street
+* peabody (mental age) score of the child (higher score is higher mental
+age)
+* prenumb (score on a numbers test before watching Sesame Street for a
+year)
+* postnumb (score on a numbers test after watching Sesame Street for a
+year)
+* funumb (follow up numbers test score measured one year after postnumb)
+* Bb Knowledge of body parts before
+* Bl Knowledge of letters before
+* Bf Knowledge of forms before
+* Bn Knowledge of numbers before
+* Br Knowledge of relations before
+* Bc Knowledge of classifications before
+* Ab Knowledge of body parts after
+* Al Knowledge of letters after
+* Af Knowledge of forms after
+* An Knowledge of numbers after
+* Ar Knowledge of relations after
+* Ac Knowledge of classifications after
+
+The examples that follow below are organized in four categories:
+
+1) running `bain` with a `t_test` object
+2) running `bain` with a `lm` object
+3) running `bain` with a `lavaan` object
+3) running bain with a named vector
+
+
+

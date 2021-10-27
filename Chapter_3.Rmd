@@ -1,4 +1,4 @@
-# Equations 
+# Equations & Picture
 
 ## Bayes' theorem 
 \begin{equation} 
@@ -14,4 +14,10 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigm
 
 This is how we refer to equations:
  -see equation \@ref(eq:normal)
+
+## Picture
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/Joke.png")
+```
 
