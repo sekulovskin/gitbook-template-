@@ -4,6 +4,7 @@ rmd_files: ["index.Rmd",
             "Chapter_3.Rmd",
             "bain_introduction.Rmd",
             "bain_examples.Rmd",
+            "bain_sensitivity.Rmd",
             "Literature.Rmd",
             "Appendix.Rmd"]
 output_dir: "docs"

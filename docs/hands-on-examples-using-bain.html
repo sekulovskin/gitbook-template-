@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Hands-on examples using bain | A GitBook template</title>
+  <meta name="description" content="Chapter 4 Hands-on examples using bain | A GitBook template" />
+  <meta name="generator" content="bookdown 0.24.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Hands-on examples using bain | A GitBook template" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="sekulovskin/gitbook-template-" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Hands-on examples using bain | A GitBook template" />
+  
+  
+  
+
+<meta name="author" content="Nikola Sekulovski" />
+
+
+<meta name="date" content="2021-10-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-to-bain.html"/>
+<link rel="next" href="sensitivity-analysis-using-bain.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Gitbook template</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="monte-carlo-simulations.html"><a href="monte-carlo-simulations.html"><i class="fa fa-check"></i><b>2</b> Monte Carlo Simulations</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="monte-carlo-simulations.html"><a href="monte-carlo-simulations.html#the-confidence-interval"><i class="fa fa-check"></i><b>2.1</b> The Confidence Interval</a></li>
+<li class="chapter" data-level="2.2" data-path="monte-carlo-simulations.html"><a href="monte-carlo-simulations.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>2.2</b> The Central Limit Theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="equations-picture.html"><a href="equations-picture.html"><i class="fa fa-check"></i><b>3</b> Equations &amp; Picture</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="equations-picture.html"><a href="equations-picture.html#bayes-theorem"><i class="fa fa-check"></i><b>3.1</b> Bayes’ theorem</a></li>
+<li class="chapter" data-level="3.2" data-path="equations-picture.html"><a href="equations-picture.html#normal-pdf"><i class="fa fa-check"></i><b>3.2</b> Normal PDF</a></li>
+<li class="chapter" data-level="3.3" data-path="equations-picture.html"><a href="equations-picture.html#picture"><i class="fa fa-check"></i><b>3.3</b> Picture</a></li>
+</ul></li>
+<li class="part"><span><b>I <code>R</code> package <code>bain</code></b></span></li>
+<li><a href="introduction-to-bain.html#introduction-to-bain">Introduction to <code>bain</code></a>
+<ul>
+<li class="chapter" data-level="3.4" data-path="introduction-to-bain.html"><a href="introduction-to-bain.html"><i class="fa fa-check"></i><b>3.4</b> Available tutorials</a></li>
+<li class="chapter" data-level="3.5" data-path="introduction-to-bain.html"><a href="introduction-to-bain.html#usage"><i class="fa fa-check"></i><b>3.5</b> Usage</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="introduction-to-bain.html"><a href="introduction-to-bain.html#arguments"><i class="fa fa-check"></i><b>3.5.1</b> Arguments</a></li>
+<li class="chapter" data-level="3.5.2" data-path="introduction-to-bain.html"><a href="introduction-to-bain.html#the-specification-of-hypotheses"><i class="fa fa-check"></i><b>3.5.2</b> The specification of <code>hypotheses</code></a></li>
+<li class="chapter" data-level="3.5.3" data-path="introduction-to-bain.html"><a href="introduction-to-bain.html#output"><i class="fa fa-check"></i><b>3.5.3</b> Output</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html"><i class="fa fa-check"></i><b>4</b> Hands-on examples using <code>bain</code></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html#using-bain-with-a-t_test-object"><i class="fa fa-check"></i><b>4.1</b> Using <code>bain</code> with a <code>t_test</code> object</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html#students-t-test-equal-within-group-variances"><i class="fa fa-check"></i><b>4.1.1</b> Student’s t-test (equal within group variances):</a></li>
+<li class="chapter" data-level="4.1.2" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html#welchs-t-test-unequal-within-group-variances"><i class="fa fa-check"></i><b>4.1.2</b> Welch’s t-test (unequal within group variances):</a></li>
+<li class="chapter" data-level="4.1.3" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html#paired-samples-t-test"><i class="fa fa-check"></i><b>4.1.3</b> Paired samples t-test:</a></li>
+<li class="chapter" data-level="4.1.4" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html#one-group-t-test"><i class="fa fa-check"></i><b>4.1.4</b> One group t-test</a></li>
+<li class="chapter" data-level="4.1.5" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html#equivalence-test"><i class="fa fa-check"></i><b>4.1.5</b> Equivalence test</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html#using-bain-with-a-lm-object"><i class="fa fa-check"></i><b>4.2</b> Using <code>bain</code> with a <code>lm</code> object</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html#anova"><i class="fa fa-check"></i><b>4.2.1</b> ANOVA</a></li>
+<li class="chapter" data-level="4.2.2" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html#ancova"><i class="fa fa-check"></i><b>4.2.2</b> ANCOVA</a></li>
+<li class="chapter" data-level="4.2.3" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html#multiple-regression"><i class="fa fa-check"></i><b>4.2.3</b> Multiple regression</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html#lavaan"><i class="fa fa-check"></i><b>4.3</b> Using <code>bain</code> with a <code>lavaan</code> object</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html#confirmatory-factor-analysis-cfa"><i class="fa fa-check"></i><b>4.3.1</b> Confirmatory Factor Analysis (CFA):</a></li>
+<li class="chapter" data-level="4.3.2" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html#latent-regression"><i class="fa fa-check"></i><b>4.3.2</b> Latent regression</a></li>
+<li class="chapter" data-level="4.3.3" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html#multiple-group-regression"><i class="fa fa-check"></i><b>4.3.3</b> Multiple group regression</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="hands-on-examples-using-bain.html"><a href="hands-on-examples-using-bain.html#named"><i class="fa fa-check"></i><b>4.4</b> Using <code>bain</code> with a named vector</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="sensitivity-analysis-using-bain.html"><a href="sensitivity-analysis-using-bain.html"><i class="fa fa-check"></i><b>5</b> Sensitivity analysis using <code>bain</code></a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="" data-path="appendix-a.html"><a href="appendix-a.html"><i class="fa fa-check"></i>Appendix A</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A GitBook template</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hands-on-examples-using-bain" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Hands-on examples using <code>bain</code></h1>
+<p>Unless indicated otherwise, the examples that follow below use a simulated
+data set inspired by the <code>Sesame Street</code> data set presented in:
+<span class="citation"><a href="references.html#ref-stevens1996applied" role="doc-biblioref">Stevens</a> (<a href="references.html#ref-stevens1996applied" role="doc-biblioref">1996</a>)</span>. This data set is included in the
+<code>bain</code> package.</p>
+<p>The variables contained in <code>sesamesim</code> are subsequently:</p>
+<ul>
+<li><code>sex</code> (1 = boy, 2 = girl) of the child</li>
+<li><code>site</code> (1 = disadvantaged inner city, 2 = advantaged suburban , 3 =
+advantaged rural,
+4 = disadvantaged rural, 5 = disadvantaged Spanish speaking) from which
+the child originates</li>
+<li><code>settin</code>g (1 = at home, 2 = at school) in which the child watches sesame
+street</li>
+<li><code>age</code> (in months) of the child</li>
+<li><code>viewenc</code> (0 = no, 1 = yes), whether or not the child is encouraged to
+watch Sesame Street</li>
+<li><code>peabody</code> (mental age) score of the child (higher score is higher mental
+age)</li>
+<li><code>prenumb</code> (score on a numbers test before watching Sesame Street for a
+year)</li>
+<li><code>postnumb</code> (score on a numbers test after watching Sesame Street for a
+year)</li>
+<li><code>funumb</code> (follow up numbers test score measured one year after postnumb)</li>
+<li><code>Bb</code> Knowledge of body parts before</li>
+<li><code>Bl</code> Knowledge of letters before</li>
+<li><code>Bf</code> Knowledge of forms before</li>
+<li><code>Bn</code> Knowledge of numbers before</li>
+<li><code>Br</code> Knowledge of relations before</li>
+<li><code>Bc</code> Knowledge of classifications before</li>
+<li><code>Ab</code> Knowledge of body parts after</li>
+<li><code>Al</code> Knowledge of letters after</li>
+<li><code>Af</code> Knowledge of forms after</li>
+<li><code>An</code> Knowledge of numbers after</li>
+<li><code>Ar</code> Knowledge of relations after</li>
+<li><code>Ac</code> Knowledge of classifications after</li>
+</ul>
+<p>The examples that follow below are organized in four categories:</p>
+<ol style="list-style-type: decimal">
+<li>running <code>bain</code> with a <code>t_test</code> object</li>
+<li>running <code>bain</code> with a <code>lm</code> object</li>
+<li>running <code>bain</code> with a <code>lavaan</code> object</li>
+<li>running bain with a named vector</li>
+</ol>
+<p>Load the <code>bain</code> package which includes the simulated <code>sesamesim</code> data set:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="hands-on-examples-using-bain.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bain)</span></code></pre></div>
+<div id="using-bain-with-a-t_test-object" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Using <code>bain</code> with a <code>t_test</code> object</h2>
+<p>If a <code>t_test</code> object is used, the main output table is
+labeled: <em>“Bayesian informative hypothesis testing for an objectof class t_test”</em> (which denotes that a <code>t-test</code> was executed).</p>
+<p><strong>Options:</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li>Bayesian Student’s t-test (equal within group variances)</li>
+<li>Bayesian Welch’s t-test (unequal within group variances</li>
+<li>Bayesian paired samples t-test</li>
+<li>Bayesian one group t-test</li>
+<li>Bayesian Equivalence test</li>
+</ol>
+<p><strong>Main steps:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Execute the analysis with <code>t_test()</code>. Note that, <code>t_test</code> will apply list-wise deletion if there are cases with missing values in the variables used.</p></li>
+<li><p>Call `bain:</p></li>
+</ol>
+<ul>
+<li><p><code>set.seed(seed)</code>. Set <code>seed</code> equal to an integer number to create a repeatable random number sequence. <code>bain</code> uses sampling to compute Bayes factors and posterior model probabilities. It is therefore recommended to run analyses with two different seeds to ensure stability of the results.</p></li>
+<li><p>When <code>t_test()</code> is used, hypotheses have to be specified using the names <code>x</code>, <code>y</code>, or <code>difference</code>.</p></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><p><code>results &lt;- bain(x,hypotheses,fraction = 1)</code>
+<code>fraction = 1</code>represents the fraction of information in the data used to construct the prior distribution (see, for example, <span class="citation"><a href="references.html#ref-gu2018approximated" role="doc-biblioref">Gu, Mulder, &amp; Hoijtink</a> (<a href="references.html#ref-gu2018approximated" role="doc-biblioref">2018</a>)</span>). The default value 1 denotes the minimal fraction, 2 denotes twice the minimal fraction, etc.</p></li>
+<li><p><code>print(results)</code> Print the results of an analysis with
+<code>bain</code>.</p></li>
+<li><p><code>summary(results, ci=0.95)</code> Present estimates and credibility intervals for the parameters used to specify the <code>hypotheses</code>. <code>ci</code> can be used to specify the confidence level of the credibility intervals.</p></li>
+</ol>
+<div id="students-t-test-equal-within-group-variances" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Student’s t-test (equal within group variances):</h3>
+<ol style="list-style-type: decimal">
+<li>Execute the analysis with <code>t_test()</code></li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="hands-on-examples-using-bain.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># collect the data for the boys in the vector x and for the girls in the</span></span>
+<span id="cb14-2"><a href="hands-on-examples-using-bain.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># vector y</span></span>
+<span id="cb14-3"><a href="hands-on-examples-using-bain.html#cb14-3" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span>sesamesim<span class="sc">$</span>postnumb[<span class="fu">which</span>(sesamesim<span class="sc">$</span>sex<span class="sc">==</span><span class="dv">1</span>)]</span>
+<span id="cb14-4"><a href="hands-on-examples-using-bain.html#cb14-4" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span>sesamesim<span class="sc">$</span>postnumb[<span class="fu">which</span>(sesamesim<span class="sc">$</span>sex<span class="sc">==</span><span class="dv">2</span>)]</span>
+<span id="cb14-5"><a href="hands-on-examples-using-bain.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># execute student&#39;s t-test (with assumed equal variances)</span></span>
+<span id="cb14-6"><a href="hands-on-examples-using-bain.html#cb14-6" aria-hidden="true" tabindex="-1"></a>ttest <span class="ot">&lt;-</span> <span class="fu">t_test</span>(x,y,<span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Call <code>bain</code> &amp; 3) Store the output in a <code>results</code> object.</li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="hands-on-examples-using-bain.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set a seed value</span></span>
+<span id="cb15-2"><a href="hands-on-examples-using-bain.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb15-3"><a href="hands-on-examples-using-bain.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># test hypotheses with bain. The names of the means are x and y.</span></span>
+<span id="cb15-4"><a href="hands-on-examples-using-bain.html#cb15-4" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">bain</span>(ttest, <span class="st">&quot;x = y; x &gt; y; x &lt; y&quot;</span>)</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Print the results</li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="hands-on-examples-using-bain.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results)</span></code></pre></div>
+<pre><code>## Bayesian informative hypothesis testing for an object of class t_test:
+## 
+##    Fit   Com   BF.u   BF.c   PMPa  PMPb 
+## H1 0.183 0.016 11.583 11.583 0.853 0.794
+## H2 0.777 0.500 1.554  3.481  0.114 0.107
+## H3 0.223 0.500 0.446  0.287  0.033 0.031
+## Hu                                 0.069
+## 
+## Hypotheses:
+##   H1: x=y
+##   H2: x&gt;y
+##   H3: x&lt;y
+## 
+## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Summary: estimates and credibility intervals</li>
+</ol>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="hands-on-examples-using-bain.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(results)</span></code></pre></div>
+<pre><code>##   Parameter   n Estimate       lb       ub
+## 1         x 115 30.09565 27.79295 32.39836
+## 2         y 125 28.85600 26.64732 31.06468</code></pre>
+</div>
+<div id="welchs-t-test-unequal-within-group-variances" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Welch’s t-test (unequal within group variances):</h3>
+<ol style="list-style-type: decimal">
+<li>Execute the analysis with <code>t_test()</code></li>
+</ol>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="hands-on-examples-using-bain.html#cb20-1" aria-hidden="true" tabindex="-1"></a>wtest <span class="ot">&lt;-</span> <span class="fu">t_test</span>(x,y,<span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">var.equal =</span> <span class="cn">FALSE</span>) <span class="co">#without assumed eq. variances</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Call <code>bain</code> &amp; 3) Store the output in a <code>results</code> object.</li>
+</ol>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="hands-on-examples-using-bain.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set a seed value</span></span>
+<span id="cb21-2"><a href="hands-on-examples-using-bain.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb21-3"><a href="hands-on-examples-using-bain.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># test hypotheses with bain. The names of the means are x and y.</span></span>
+<span id="cb21-4"><a href="hands-on-examples-using-bain.html#cb21-4" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">bain</span>(wtest, <span class="st">&quot;x = y; x &gt; y; x &lt; y&quot;</span>)</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Print the results</li>
+</ol>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="hands-on-examples-using-bain.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results)</span></code></pre></div>
+<pre><code>## Bayesian informative hypothesis testing for an object of class t_test:
+## 
+##    Fit   Com   BF.u   BF.c   PMPa  PMPb 
+## H1 0.183 0.016 11.586 11.586 0.853 0.794
+## H2 0.776 0.500 1.552  3.467  0.114 0.106
+## H3 0.224 0.500 0.448  0.288  0.033 0.031
+## Hu                                 0.069
+## 
+## Hypotheses:
+##   H1: x=y
+##   H2: x&gt;y
+##   H3: x&lt;y
+## 
+## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Summary: estimates and credibility intervals</li>
+</ol>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="hands-on-examples-using-bain.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(results)</span></code></pre></div>
+<pre><code>##   Parameter   n Estimate       lb       ub
+## 1         x 115 30.09565 27.70909 32.48221
+## 2         y 125 28.85600 26.72394 30.98806</code></pre>
+</div>
+<div id="paired-samples-t-test" class="section level3" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Paired samples t-test:</h3>
+<ol style="list-style-type: decimal">
+<li>Execute the analysis with <code>t_test()</code></li>
+</ol>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="hands-on-examples-using-bain.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the pre with the post measurements</span></span>
+<span id="cb26-2"><a href="hands-on-examples-using-bain.html#cb26-2" aria-hidden="true" tabindex="-1"></a>pttest <span class="ot">&lt;-</span> <span class="fu">t_test</span>(sesamesim<span class="sc">$</span>prenumb,sesamesim<span class="sc">$</span>postnumb,<span class="at">paired =</span> <span class="cn">TRUE</span>) </span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Call <code>bain</code> &amp; 3) Store the output in a <code>results</code> object.</li>
+</ol>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="hands-on-examples-using-bain.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set a seed value</span></span>
+<span id="cb27-2"><a href="hands-on-examples-using-bain.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb27-3"><a href="hands-on-examples-using-bain.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># test hypotheses with bain. The names of the means are x and y.</span></span>
+<span id="cb27-4"><a href="hands-on-examples-using-bain.html#cb27-4" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">bain</span>(pttest, <span class="st">&quot;difference=0; difference&gt;0; difference&lt;0&quot;</span>)</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Print the results</li>
+</ol>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="hands-on-examples-using-bain.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results)</span></code></pre></div>
+<pre><code>## Bayesian informative hypothesis testing for an object of class t_test:
+## 
+##    Fit   Com   BF.u  BF.c               PMPa  PMPb 
+## H1 0.000 0.042 0.000 0.000              0.000 0.000
+## H2 0.000 0.500 0.000 0.000              0.000 0.000
+## H3 1.000 0.500 2.000 22919082073133.293 1.000 0.667
+## Hu                                            0.333
+## 
+## Hypotheses:
+##   H1: difference=0
+##   H2: difference&gt;0
+##   H3: difference&lt;0
+## 
+## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Summary: estimates and credibility intervals</li>
+</ol>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="hands-on-examples-using-bain.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(results)</span></code></pre></div>
+<pre><code>##    Parameter   n  Estimate        lb        ub
+## 1 difference 240 -8.691667 -9.895994 -7.487339</code></pre>
+</div>
+<div id="one-group-t-test" class="section level3" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> One group t-test</h3>
+<ol style="list-style-type: decimal">
+<li>Execute the analysis with <code>t_test()</code></li>
+</ol>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="hands-on-examples-using-bain.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare post measurements with the reference value 30</span></span>
+<span id="cb32-2"><a href="hands-on-examples-using-bain.html#cb32-2" aria-hidden="true" tabindex="-1"></a>ttest_one_gr <span class="ot">&lt;-</span> <span class="fu">t_test</span>(sesamesim<span class="sc">$</span>postnumb)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Call <code>bain</code> &amp; 3) Store the output in a <code>results</code> object.</li>
+</ol>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="hands-on-examples-using-bain.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set a seed value</span></span>
+<span id="cb33-2"><a href="hands-on-examples-using-bain.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb33-3"><a href="hands-on-examples-using-bain.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># test hypotheses with bain versus the reference value 30. Use x to refer to the mean</span></span>
+<span id="cb33-4"><a href="hands-on-examples-using-bain.html#cb33-4" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">bain</span>(ttest_one_gr, <span class="st">&quot;x=30; x&gt;30; x&lt;30&quot;</span>)</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Print the results</li>
+</ol>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="hands-on-examples-using-bain.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results)</span></code></pre></div>
+<pre><code>## Bayesian informative hypothesis testing for an object of class t_test:
+## 
+##    Fit   Com   BF.u   BF.c   PMPa  PMPb 
+## H1 0.390 0.032 12.320 12.320 0.860 0.804
+## H2 0.249 0.500 0.498  0.332  0.035 0.033
+## H3 0.751 0.500 1.502  3.012  0.105 0.098
+## Hu                                 0.065
+## 
+## Hypotheses:
+##   H1: x=30
+##   H2: x&gt;30
+##   H3: x&lt;30
+## 
+## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Summary: estimates and credibility intervals</li>
+</ol>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="hands-on-examples-using-bain.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(results)</span></code></pre></div>
+<pre><code>##   Parameter   n Estimate       lb       ub
+## 1         x 240    29.45 27.85743 31.04257</code></pre>
+</div>
+<div id="equivalence-test" class="section level3" number="4.1.5">
+<h3><span class="header-section-number">4.1.5</span> Equivalence test</h3>
+<ol style="list-style-type: decimal">
+<li>Execute the analysis with <code>t_test()</code></li>
+</ol>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="hands-on-examples-using-bain.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># collect the data for the boys in the vector x and for the girs in the</span></span>
+<span id="cb38-2"><a href="hands-on-examples-using-bain.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># vector y</span></span>
+<span id="cb38-3"><a href="hands-on-examples-using-bain.html#cb38-3" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span>sesamesim<span class="sc">$</span>postnumb[<span class="fu">which</span>(sesamesim<span class="sc">$</span>sex<span class="sc">==</span><span class="dv">1</span>)]</span>
+<span id="cb38-4"><a href="hands-on-examples-using-bain.html#cb38-4" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span>sesamesim<span class="sc">$</span>postnumb[<span class="fu">which</span>(sesamesim<span class="sc">$</span>sex<span class="sc">==</span><span class="dv">2</span>)]</span>
+<span id="cb38-5"><a href="hands-on-examples-using-bain.html#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># execute student&#39;s t-test</span></span>
+<span id="cb38-6"><a href="hands-on-examples-using-bain.html#cb38-6" aria-hidden="true" tabindex="-1"></a>ttest_eq <span class="ot">&lt;-</span> <span class="fu">t_test</span>(x,y,<span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Compute the pooled within standard deviation using the variance of x</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="hands-on-examples-using-bain.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (ttest$v[1]) and y (ttest$v[2])</span></span>
+<span id="cb39-2"><a href="hands-on-examples-using-bain.html#cb39-2" aria-hidden="true" tabindex="-1"></a>pwsd <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(((<span class="fu">length</span>(x) <span class="sc">-</span><span class="dv">1</span>) <span class="sc">*</span> ttest<span class="sc">$</span>v[<span class="dv">1</span>] <span class="sc">+</span> (<span class="fu">length</span>(y)<span class="sc">-</span><span class="dv">1</span>) <span class="sc">*</span> ttest<span class="sc">$</span>v[<span class="dv">2</span>])<span class="sc">/</span></span>
+<span id="cb39-3"><a href="hands-on-examples-using-bain.html#cb39-3" aria-hidden="true" tabindex="-1"></a>((<span class="fu">length</span>(x) <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span> (<span class="fu">length</span>(y) <span class="sc">-</span><span class="dv">1</span>)))</span>
+<span id="cb39-4"><a href="hands-on-examples-using-bain.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print pwsd in order to be able to include it in the hypothesis. Its value</span></span>
+<span id="cb39-5"><a href="hands-on-examples-using-bain.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pwsd)</span></code></pre></div>
+<pre><code>## [1] 12.59908</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Call <code>bain</code> &amp;</p></li>
+<li><p>Store the output in a <code>results</code> object.
+Test hypotheses (the means of boy and girl differ less than .2 * pwsd =
+2.52 VERSUS the means differ more than .2 * pwsd = 2.52).
+Note that, with <code>bain</code>, .2 is a value for <a href="https://en.wikiversity.org/wiki/Cohen%27s_d#:~:text=Cohen&#39;s%20d%20is%20an%20effect,the%20comparison%20between%20two%20means.">Cohen’s d</a> reflecting a <em>“small”</em> effect, that
+is, the means differ less or more than .2 pwsd. Again, use x and y to refer to the means.</p></li>
+</ol>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="hands-on-examples-using-bain.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set a seed value</span></span>
+<span id="cb41-2"><a href="hands-on-examples-using-bain.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb41-3"><a href="hands-on-examples-using-bain.html#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="hands-on-examples-using-bain.html#cb41-4" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">bain</span>(ttest_eq, <span class="st">&quot;x - y &gt; -2.52 &amp; x - y &lt; 2.52&quot;</span>)</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Print the results</li>
+</ol>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="hands-on-examples-using-bain.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results)</span></code></pre></div>
+<pre><code>## Bayesian informative hypothesis testing for an object of class t_test:
+## 
+##    Fit   Com   BF.u  BF.c   PMPa  PMPb 
+## H1 0.770 0.111 6.967 26.927 1.000 0.874
+## Hu                                0.126
+## 
+## Hypotheses:
+##   H1: x-y&gt;-2.52&amp;x-y&lt;2.52
+## 
+## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Summary: estimates and credibility intervals</li>
+</ol>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="hands-on-examples-using-bain.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(results)</span></code></pre></div>
+<pre><code>##   Parameter   n Estimate       lb       ub
+## 1         x 115 30.09565 27.79295 32.39836
+## 2         y 125 28.85600 26.64732 31.06468</code></pre>
+</div>
+</div>
+<div id="using-bain-with-a-lm-object" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Using <code>bain</code> with a <code>lm</code> object</h2>
+<p><strong>Options:</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Bayesian ANOVA. The example concerns a one-way ANOVA. Two-way or higher
+order ANOVAs can only be handled by recoding all factors into one
+factor. If, for example, there is a factor <code>sex</code> with levels <code>man</code> and <code>woman</code>,
+and a factor <code>age</code> with levels <code>young</code> and <code>old</code>, these have to be recoded in a
+new factor <code>sexage</code> with levels <code>manyoung</code>, <code>manold</code>, <code>womanyoung</code>, <code>womanold</code>.
+If a <code>lm</code> “ANOVA” object is used, the main output table is
+labeled: “Bayesian informative hypothesis testing for an object
+of class lm (ANOVA)”</p></li>
+<li><p>Bayesian ANCOVA. The example concerns a one-way ANCOVA. Two-way or higher
+order ANCOVAs can only be handled by recoding all factors into one
+factor. <strong>Note that calls to <code>lm</code> using functions of the predictors
+(for example, adding squared predictors to the model using commands like
+<code>y ~ x + I(x^2)</code>)
+can not be processed by <code>bain</code>.</strong> However, one can compute a new variable
+(for example, a squared predictor) and add this variable to the
+model specification of <code>lm</code>. If a <code>lm</code> “ANCOVA” object is used, the
+main output table is
+labeled: “Bayesian informative hypothesis testing for an object
+of class lm (ANCOVA).” <strong>Note that, in
+the ANCOVA the covariates are centered!</strong></p></li>
+<li><p>Bayesian multiple regression. <strong>Note that calls to <code>lm</code> using
+functions of the predictors (for example, adding squared predictors
+to the model using commands like <code>y ~ x + I(x^2)</code>)
+can not be processed by <code>bain</code>.</strong> However, one can compute a new variable
+(for example, a squared predictor) and add this variable to the
+model specification of <code>lm</code>. Note furthermore, that only if
+<code>standardize = FALSE</code> interactions between predictors should
+be processed, because a standardized interaction is not the same as the
+interaction between two standardized variables.
+If a <code>lm</code> “regression with only continuous predictors”
+object is used, the main output table is
+labeled: “Bayesian informative hypothesis testing for an object
+of class lm (continuous predictors).” If a <code>lm</code> object contains
+<strong>two or more</strong>factors and, optionally, continuous predictors, the main output table islabeled: “Bayesian informative hypothesis testing for an object of
+class lm (mixed predictors).” In case of mixed predictors, the one group
+approach to computing Bayes factors is used (see, <span class="citation"><a href="references.html#ref-hoijtink2019bayesian" role="doc-biblioref">Hoijtink, Gu, &amp; Mulder</a> (<a href="references.html#ref-hoijtink2019bayesian" role="doc-biblioref">2019</a>)</span>). This may render inferior results if group sizes are unequal.</p></li>
+<li><p>Bayesian ANOVA. Sensitivity analysis. See <span class="citation"><a href="references.html#ref-hoijtink2019tutorial" role="doc-biblioref">Hoijtink, Mulder, Lissa, &amp; Gu</a> (<a href="references.html#ref-hoijtink2019tutorial" role="doc-biblioref">2019</a>)</span> for elaborations.</p></li>
+</ol>
+<p><strong>Main steps:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Execute the analysis with <code>lm()</code>. Note that, <code>lm</code> will apply list-wise deletion if there are cases with missing values in the variables used.</p></li>
+<li><p>Display the estimates and their names using the command <code>coef(x)</code>. (Unique abbreviations of) these names will be used to specify <code>hypotheses</code>.</p></li>
+<li><p><code>set.seed(seed)</code>. Set <code>seed</code> equal to an integer
+number to create a repeatable random number sequence. <code>bain</code> uses sampling to compute Bayes factors and posterior model probabilities. It is therefore recommended to run analyses with two different seeds to ensure stability of the results.
+And call <code>bain</code> by using <code>results &lt;- bain(x,hypotheses,fraction = 1)</code> or
+<code>results &lt;-bain(x,hypotheses,fraction = 1,standardize = FALSE)</code>. The first call to
+<code>bain</code> is used in case of <code>lm</code> implementations of <em>ANOVA</em> and <em>ANCOVA</em>. The
+second call to <code>bain</code> is used in case of <code>lm</code> implementations of
+<em>multiple regression</em>. With <code>standardize = TRUE</code> hypotheses with respect
+to standardized regression coefficients are evaluated. With <code>standardize = FALSE</code> hypotheses with respect to unstandardized regression coefficients
+are evaluated. <code>fraction = 1</code> represents the fraction of information in the data used to construct the prior distribution. The default value 1 denotes the minimal fraction, 2 denotes twice the minimal fraction, etc.</p></li>
+<li><p><code>print(results)</code> Print the results of an analysis with
+<code>bain</code>.</p></li>
+<li><p><code>summary(results, ci=0.95)</code> Present estimates and credibility intervals for the parameters used to specify the <code>hypotheses</code>. <code>ci</code> can be used to specify the confidence level of the credibility intervals.</p></li>
+</ol>
+<div id="anova" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> ANOVA</h3>
+<ol style="list-style-type: decimal">
+<li>Execute the analysis with <code>lm()</code></li>
+</ol>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="hands-on-examples-using-bain.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a factor of variable site</span></span>
+<span id="cb46-2"><a href="hands-on-examples-using-bain.html#cb46-2" aria-hidden="true" tabindex="-1"></a>sesamesim<span class="sc">$</span>site <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(sesamesim<span class="sc">$</span>site)</span>
+<span id="cb46-3"><a href="hands-on-examples-using-bain.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># execute an analysis of variance using lm() which, due to the -1, returns</span></span>
+<span id="cb46-4"><a href="hands-on-examples-using-bain.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># estimates of the means per group</span></span>
+<span id="cb46-5"><a href="hands-on-examples-using-bain.html#cb46-5" aria-hidden="true" tabindex="-1"></a>anov <span class="ot">&lt;-</span> <span class="fu">lm</span>(postnumb<span class="sc">~</span>site<span class="dv">-1</span>,sesamesim)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Display the estimated coefficients using <code>coef()</code></li>
+</ol>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="hands-on-examples-using-bain.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(anov)</span></code></pre></div>
+<pre><code>##    site1    site2    site3    site4    site5 
+## 29.66667 38.98182 23.18750 25.32558 31.72222</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Set seed and call <code>bain</code></li>
+</ol>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="hands-on-examples-using-bain.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb49-2"><a href="hands-on-examples-using-bain.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># test hypotheses with bain</span></span>
+<span id="cb49-3"><a href="hands-on-examples-using-bain.html#cb49-3" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">bain</span>(anov, <span class="st">&quot;site1=site2=site3=site4=site5; site2&gt;site5&gt;site1&gt;</span></span>
+<span id="cb49-4"><a href="hands-on-examples-using-bain.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="st">site3&gt;site4&quot;</span>)</span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Print the results</li>
+</ol>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="hands-on-examples-using-bain.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results)</span></code></pre></div>
+<pre><code>## Bayesian informative hypothesis testing for an object of class lm (ANOVA):
+## 
+##    Fit   Com   BF.u   BF.c   PMPa  PMPb 
+## H1 0.000 0.000 0.000  0.000  0.000 0.000
+## H2 0.121 0.008 14.559 16.428 1.000 0.936
+## Hu                                 0.064
+## 
+## Hypotheses:
+##   H1: site1=site2=site3=site4=site5
+##   H2: site2&gt;site5&gt;site1&gt;site3&gt;site4
+## 
+## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Summary: estimates and credibility intervals</li>
+</ol>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="hands-on-examples-using-bain.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(results)</span></code></pre></div>
+<pre><code>##   Parameter  n Estimate       lb       ub
+## 1     site1 60 29.66667 26.82991 32.50343
+## 2     site2 55 38.98182 36.01892 41.94472
+## 3     site3 64 23.18750 20.44082 25.93418
+## 4     site4 43 25.32558 21.97466 28.67650
+## 5     site5 18 31.72222 26.54303 36.90141</code></pre>
+</div>
+<div id="ancova" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> ANCOVA</h3>
+<ol style="list-style-type: decimal">
+<li>Execute the analysis with <code>lm()</code></li>
+</ol>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="hands-on-examples-using-bain.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Center the covariate. If centered the coef() command below displays the</span></span>
+<span id="cb54-2"><a href="hands-on-examples-using-bain.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co"># adjusted means. If not centered the intercepts are displayed.</span></span>
+<span id="cb54-3"><a href="hands-on-examples-using-bain.html#cb54-3" aria-hidden="true" tabindex="-1"></a>sesamesim<span class="sc">$</span>prenumb <span class="ot">&lt;-</span> sesamesim<span class="sc">$</span>prenumb <span class="sc">-</span> <span class="fu">mean</span>(sesamesim<span class="sc">$</span>prenumb)</span>
+<span id="cb54-4"><a href="hands-on-examples-using-bain.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># execute an analysis of covariance using lm() which, due to the -1, returns</span></span>
+<span id="cb54-5"><a href="hands-on-examples-using-bain.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co"># estimates of the adjusted means per group</span></span>
+<span id="cb54-6"><a href="hands-on-examples-using-bain.html#cb54-6" aria-hidden="true" tabindex="-1"></a>ancov <span class="ot">&lt;-</span> <span class="fu">lm</span>(postnumb<span class="sc">~</span>site<span class="sc">+</span>prenumb<span class="dv">-1</span>,sesamesim)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Display the estimated coefficients using <code>coef()</code></li>
+</ol>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="hands-on-examples-using-bain.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(ancov)</span></code></pre></div>
+<pre><code>##      site1      site2      site3      site4      site5    prenumb 
+## 27.4293820 34.9818244 27.6904082 26.9840163 31.4298837  0.7159311</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Set seed and call <code>bain</code></li>
+</ol>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="hands-on-examples-using-bain.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb57-2"><a href="hands-on-examples-using-bain.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># test hypotheses with bain</span></span>
+<span id="cb57-3"><a href="hands-on-examples-using-bain.html#cb57-3" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">bain</span>(ancov, <span class="st">&quot;site1=site2=site3=site4=site5;</span></span>
+<span id="cb57-4"><a href="hands-on-examples-using-bain.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="st">                        site2&gt;site5&gt;site1&gt;site3&gt;site4&quot;</span>)</span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Print the results</li>
+</ol>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="hands-on-examples-using-bain.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results)</span></code></pre></div>
+<pre><code>## Bayesian informative hypothesis testing for an object of class lm (ANCOVA):
+## 
+##    Fit   Com   BF.u   BF.c   PMPa  PMPb 
+## H1 0.000 0.000 0.002  0.002  0.000 0.000
+## H2 0.183 0.009 19.899 24.126 1.000 0.952
+## Hu                                 0.048
+## 
+## Hypotheses:
+##   H1: site1=site2=site3=site4=site5
+##   H2: site2&gt;site5&gt;site1&gt;site3&gt;site4
+## 
+## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Summary: estimates and credibility intervals</li>
+</ol>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="hands-on-examples-using-bain.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(results)</span></code></pre></div>
+<pre><code>##   Parameter   n   Estimate         lb        ub
+## 1     site1  60 27.4293820 25.1603844 29.698380
+## 2     site2  55 34.9818244 32.5529993 37.410650
+## 3     site3  64 27.6904082 25.4002689 29.980548
+## 4     site4  43 26.9840163 24.3250440 29.642989
+## 5     site5  18 31.4298837 27.3413936 35.518374
+## 6   prenumb 240  0.7159311  0.5986552  0.833207</code></pre>
+</div>
+<div id="multiple-regression" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Multiple regression</h3>
+<ol style="list-style-type: decimal">
+<li>Execute the analysis with <code>lm()</code></li>
+</ol>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="hands-on-examples-using-bain.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># execute a multiple regression using lm()</span></span>
+<span id="cb62-2"><a href="hands-on-examples-using-bain.html#cb62-2" aria-hidden="true" tabindex="-1"></a>regr <span class="ot">&lt;-</span> <span class="fu">lm</span>(postnumb <span class="sc">~</span> age <span class="sc">+</span> peabody <span class="sc">+</span> prenumb,sesamesim)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Display the estimated coefficients using <code>coef()</code></li>
+</ol>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="hands-on-examples-using-bain.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(regr)</span></code></pre></div>
+<pre><code>## (Intercept)         age     peabody     prenumb 
+##  18.1160056   0.1159941   0.1157549   0.6727219</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Set seed and call <code>bain</code></li>
+</ol>
+<ul>
+<li><strong>Testing unstandardized coefficients.</strong></li>
+</ul>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="hands-on-examples-using-bain.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb65-2"><a href="hands-on-examples-using-bain.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co">#test hypotheses with bain. Note that standardize = FALSE denotes that the</span></span>
+<span id="cb65-3"><a href="hands-on-examples-using-bain.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co"># hypotheses are in terms of unstandardized regression coefficients</span></span>
+<span id="cb65-4"><a href="hands-on-examples-using-bain.html#cb65-4" aria-hidden="true" tabindex="-1"></a>results<span class="ot">&lt;-</span><span class="fu">bain</span>(regr, <span class="st">&quot;age = 0 &amp; peab=0 &amp; pre=0 ; age &gt; 0 &amp; peab &gt; 0 &amp; pre &gt; 0&quot;</span>,</span>
+<span id="cb65-5"><a href="hands-on-examples-using-bain.html#cb65-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">standardize =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<ul>
+<li><strong>Testing standardized coefficients:</strong> Since it is only meaningful to compare regression coefficients if they are measured on the same scale, <code>bain</code> can also evaluate standardized regression coefficients (based on the <code>seBeta</code> function by <span class="citation"><a href="references.html#ref-jones2015normal" role="doc-biblioref">Jones &amp; Waller</a> (<a href="references.html#ref-jones2015normal" role="doc-biblioref">2015</a>)</span>):</li>
+</ul>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="hands-on-examples-using-bain.html#cb66-1" aria-hidden="true" tabindex="-1"></a>results<span class="ot">&lt;-</span><span class="fu">bain</span>(regr, <span class="st">&quot;age = peab = pre ; pre &gt; age &gt; peab&quot;</span>,<span class="at">standardize =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Print the (standardized) results</li>
+</ol>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="hands-on-examples-using-bain.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results)</span></code></pre></div>
+<pre><code>## Bayesian informative hypothesis testing for an object of class lm (continuous predictors):
+## 
+##    Fit   Com   BF.u  BF.c  PMPa  PMPb 
+## H1 0.000 0.202 0.000 0.000 0.000 0.000
+## H2 0.125 0.216 0.579 0.519 1.000 0.367
+## Hu                               0.633
+## 
+## Hypotheses:
+##   H1: age=peabody=prenumb
+##   H2: prenumb&gt;age&gt;peabody
+## 
+## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Summary: estimates and credibility intervals</li>
+</ol>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="hands-on-examples-using-bain.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(results)</span></code></pre></div>
+<pre><code>##   Parameter   n   Estimate          lb        ub
+## 1       age 240 0.05797594 -0.04043979 0.1563917
+## 2   peabody 240 0.14781779  0.03457188 0.2610637
+## 3   prenumb 240 0.56740695  0.46067277 0.6741411</code></pre>
+</div>
+</div>
+<div id="lavaan" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Using <code>bain</code> with a <code>lavaan</code> object</h2>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="hands-on-examples-using-bain.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(lavaan))</span></code></pre></div>
+<p>If a <code>lavaan</code> object is used, the main output table is labeled:
+<em>“Bayesian informative hypothesis testing for an object
+of class lavaan”</em>. See the tutorial by <span class="citation"><a href="references.html#ref-van2021teacher" role="doc-biblioref">Van Lissa et al.</a> (<a href="references.html#ref-van2021teacher" role="doc-biblioref">2021</a>)</span> for further elaborations.
+Also, visit <a href="www.lavaan.org">this link</a> for more <code>lavaan</code> mini tutorials, examples and elaborations.</p>
+<p><strong>Options:</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Bayesian confirmatory factor analysis</p></li>
+<li><p>Bayesian latent regression</p></li>
+<li><p>Bayesian multiple group latent regression. Note that, multiple group
+models with between group restrictions cannot be processed.</p></li>
+</ol>
+<p><strong>Main steps:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Specify a <code>lavaan</code> model using the <code>model &lt;- ...</code> command. In case
+of multiple group models, only models <strong>without</strong> between group
+restrictions can be processed by <code>bain</code> with a <code>lavaan</code> object
+as input. Secondly, execute an analysis with the sem, cfa, or growth functions (e.g: <code>x &lt;- sem()</code> or <code>x &lt;- cfa()</code> or <code>x &lt;- growth()</code>) implemented in <a href="https://lavaan.ugent.be"><code>lavaan</code></a>.
+Note that, by default, <code>lavaan</code> will apply list-wise deletion if there are cases with missing values in the variables used. An imputation based method
+for dealing with missing values tailored to Bayesian hypothesis
+evaluation is illustrated in section <a href="hands-on-examples-using-bain.html#named">4.4</a>. (based on <span class="citation"><a href="references.html#ref-hoijtink2019computing" role="doc-biblioref">Hoijtink, Gu, Mulder, &amp; Rosseel</a> (<a href="references.html#ref-hoijtink2019computing" role="doc-biblioref">2019</a>)</span>). If an analysis with <code>lavaan</code> is executed using <code>missing = "fiml"</code> the sample size is not corrected for the presence of missing values. This will affect (bias) the evaluation of hypotheses specified using (about) equality constraints.<br />
+Specify a <code>lavaan</code> model using the <code>model &lt;- ...</code> command. In case
+of multiple group models, only models <strong>without</strong> between group
+restrictions can be processed by <code>bain</code> with a <code>lavaan</code> object
+as input.</p></li>
+<li><p>Display the estimates and their names using the command <code>coef(x)</code>.
+Only parameters who’s names contain <code>~</code> (regression coefficients),
+<code>~1</code> (intercepts), or <code>=~</code> (factor loadings) can be used in the
+specification of hypotheses. (Unique abbreviations of) the names
+can be used to specify <code>hypotheses</code>. For multiple group analyses
+the names have to end with a group label <code>.grp</code>. Group labels
+can be assigned using commands like
+<code>sesamesim$sex &lt;- factor(sesamesim$sex, labels = c("boy", "girl"))</code>.
+If in a <code>lavaan</code> model parameters are labeled, e.g., as in
+<code>model &lt;- 'age ~ c(a1, a2)*peabody + c(b1, b2)*1</code> then the labels
+have to be used in the specification of hypotheses.</p></li>
+<li><p><code>set.seed(seed)</code>. Set <code>seed</code> equal to an integer
+number to create a repeatable random number sequence. <code>bain</code> uses sampling to compute Bayes factors and posterior model probabilities. It is therefore recommended to run analyses with two different seeds to ensure stability of the results.
+And <code>results &lt;- bain(x,hypotheses,fraction = 1,standardize = FALSE)</code>.
+With <code>standardize = TRUE</code> hypotheses with respect
+to standardized coefficients are evaluated. With <code>standardize = FALSE</code> hypotheses with respect to unstandardized coefficients
+are evaluated. <code>fraction = 1</code> represents the fraction of information in the data used to construct the prior distribution. The default value 1 denotes the minimal fraction, 2 denotes twice the minimal fraction, etc.).</p></li>
+<li><p><code>print(results)</code> Print the results of an analysis with
+<code>bain</code>.</p></li>
+<li><p><code>summary(results, ci=0.95)</code> Present estimates and credibility intervals for the parameters used to specify the <code>hypotheses</code>. <code>ci</code> can be used to specify the confidence level of the credibility intervals.</p></li>
+</ol>
+<div id="confirmatory-factor-analysis-cfa" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Confirmatory Factor Analysis (CFA):</h3>
+<ol style="list-style-type: decimal">
+<li>Speficy the model and execute the analysis:</li>
+</ol>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="hands-on-examples-using-bain.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  Specify and fit the confirmatory factor model</span></span>
+<span id="cb72-2"><a href="hands-on-examples-using-bain.html#cb72-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
+<span id="cb72-3"><a href="hands-on-examples-using-bain.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="st">    A =~ Ab + Al + Af + An + Ar + Ac </span></span>
+<span id="cb72-4"><a href="hands-on-examples-using-bain.html#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="st">    B =~ Bb + Bl + Bf + Bn + Br + Bc </span></span>
+<span id="cb72-5"><a href="hands-on-examples-using-bain.html#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
+<span id="cb72-6"><a href="hands-on-examples-using-bain.html#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the lavaan sem function to execute the confirmatory factor analysis</span></span>
+<span id="cb72-7"><a href="hands-on-examples-using-bain.html#cb72-7" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sem</span>(model1, <span class="at">data =</span> sesamesim, <span class="at">std.lv =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Display the estimates and specify an object containing the hypotheses:</li>
+</ol>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="hands-on-examples-using-bain.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(fit1)</span></code></pre></div>
+<pre><code>##  A=~Ab  A=~Al  A=~Af  A=~An  A=~Ar  A=~Ac  B=~Bb  B=~Bl  B=~Bf  B=~Bn  B=~Br 
+##  3.885  9.583  3.367 10.906  1.790  4.424  4.433  5.054  3.200  8.588  1.997 
+##  B=~Bc Ab~~Ab Al~~Al Af~~Af An~~An Ar~~Ar Ac~~Ac Bb~~Bb Bl~~Bl Bf~~Bf Bn~~Bn 
+##  3.685 14.808 47.655  4.843 25.920  3.370  6.101 13.857 35.349  5.360 19.799 
+## Br~~Br Bc~~Bc   A~~B 
+##  3.693  6.219  0.788</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="hands-on-examples-using-bain.html#cb75-1" aria-hidden="true" tabindex="-1"></a>hypotheses1 <span class="ot">&lt;-</span></span>
+<span id="cb75-2"><a href="hands-on-examples-using-bain.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot; A=~Ab &gt; .6 &amp; A=~Al &gt; .6 &amp; A=~Af &gt; .6 &amp; A=~An &gt; .6 &amp; A=~Ar &gt; .6 &amp; A=~Ac &gt;.6 &amp; </span></span>
+<span id="cb75-3"><a href="hands-on-examples-using-bain.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="st">B=~Bb &gt; .6 &amp; B=~Bl &gt; .6 &amp; B=~Bf &gt; .6 &amp; B=~Bn &gt; .6 &amp; B=~Br &gt; .6 &amp; B=~Bc &gt;.6&quot;</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Set seed and call <code>bain</code></li>
+</ol>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="hands-on-examples-using-bain.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb76-2"><a href="hands-on-examples-using-bain.html#cb76-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">bain</span>(fit1,hypotheses1,<span class="at">fraction=</span><span class="dv">1</span>,<span class="at">standardize=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Print the results</li>
+</ol>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="hands-on-examples-using-bain.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span></code></pre></div>
+<pre><code>## Bayesian informative hypothesis testing for an object of class lavaan:
+## 
+##    Fit   Com   BF.u   BF.c    PMPa  PMPb 
+## H1 0.880 0.009 95.519 788.316 1.000 0.990
+## Hu                                  0.010
+## 
+## Hypotheses:
+##   H1: A=~Ab&gt;.6&amp;A=~Al&gt;.6&amp;A=~Af&gt;.6&amp;A=~An&gt;.6&amp;A=~Ar&gt;.6&amp;A=~Ac&gt;.6&amp;B=~Bb&gt;.6&amp;B=~Bl&gt;.6&amp;B=~Bf&gt;.6&amp;B=~Bn&gt;.6&amp;B=~Br&gt;.6&amp;B=~Bc&gt;.6
+## 
+## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Summary: estimates and credibility intervals</li>
+</ol>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="hands-on-examples-using-bain.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(y, <span class="at">ci =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>##    Parameter   n  Estimate        lb        ub
+## 1      A=~Ab 240 0.7104508 0.6433340 0.7775677
+## 2      A=~Al 240 0.8114029 0.7632944 0.8595115
+## 3      A=~Af 240 0.8370936 0.7941226 0.8800647
+## 4      A=~An 240 0.9061333 0.8769727 0.9352938
+## 5      A=~Ar 240 0.6980414 0.6287429 0.7673399
+## 6      A=~Ac 240 0.8731170 0.8374249 0.9088091
+## 7      B=~Bb 240 0.7658397 0.7076188 0.8240605
+## 8      B=~Bl 240 0.6476698 0.5687998 0.7265397
+## 9      B=~Bf 240 0.8101849 0.7604160 0.8599537
+## 10     B=~Bn 240 0.8878987 0.8531156 0.9226818
+## 11     B=~Br 240 0.7205677 0.6540778 0.7870576
+## 12     B=~Bc 240 0.8282004 0.7819303 0.8744705</code></pre>
+</div>
+<div id="latent-regression" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Latent regression</h3>
+<ol style="list-style-type: decimal">
+<li>Speficy the model and execute the analysis:</li>
+</ol>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="hands-on-examples-using-bain.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  Specify and fit the confirmatory factor model</span></span>
+<span id="cb81-2"><a href="hands-on-examples-using-bain.html#cb81-2" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
+<span id="cb81-3"><a href="hands-on-examples-using-bain.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="st">    A  =~ Ab + Al + Af + An + Ar + Ac </span></span>
+<span id="cb81-4"><a href="hands-on-examples-using-bain.html#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="st">    B =~ Bb + Bl + Bf + Bn + Br + Bc</span></span>
+<span id="cb81-5"><a href="hands-on-examples-using-bain.html#cb81-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-6"><a href="hands-on-examples-using-bain.html#cb81-6" aria-hidden="true" tabindex="-1"></a><span class="st">    A ~ B + age + peabody</span></span>
+<span id="cb81-7"><a href="hands-on-examples-using-bain.html#cb81-7" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
+<span id="cb81-8"><a href="hands-on-examples-using-bain.html#cb81-8" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sem</span>(model2, <span class="at">data =</span> sesamesim, <span class="at">std.lv =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Display the estimates and specify an object containing the hypotheses:</li>
+</ol>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="hands-on-examples-using-bain.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(fit2)</span></code></pre></div>
+<pre><code>##     A=~Ab     A=~Al     A=~Af     A=~An     A=~Ar     A=~Ac     B=~Bb     B=~Bl 
+##     2.392     5.899     2.074     6.713     1.102     2.723     4.434     5.055 
+##     B=~Bf     B=~Bn     B=~Br     B=~Bc       A~B     A~age A~peabody    Ab~~Ab 
+##     3.200     8.587     1.997     3.686     1.284     0.000    -0.002    14.803 
+##    Al~~Al    Af~~Af    An~~An    Ar~~Ar    Ac~~Ac    Bb~~Bb    Bl~~Bl    Bf~~Bf 
+##    47.683     4.837    25.956     3.370     6.101    13.853    35.341     5.358 
+##    Bn~~Bn    Br~~Br    Bc~~Bc 
+##    19.815     3.695     6.216</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="hands-on-examples-using-bain.html#cb84-1" aria-hidden="true" tabindex="-1"></a>hypotheses2 <span class="ot">&lt;-</span> <span class="st">&quot;A~B &gt; A~peabody = A~age = 0; </span></span>
+<span id="cb84-2"><a href="hands-on-examples-using-bain.html#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="st">               A~B &gt; A~peabody &gt; A~age = 0; </span></span>
+<span id="cb84-3"><a href="hands-on-examples-using-bain.html#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="st">A~B &gt; A~peabody &gt; A~age &gt; 0&quot;</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Set seed and call <code>bain</code></li>
+</ol>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="hands-on-examples-using-bain.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb85-2"><a href="hands-on-examples-using-bain.html#cb85-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">bain</span>(fit2, hypotheses2, <span class="at">fraction =</span> <span class="dv">1</span>, <span class="at">standardize =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Print the results</li>
+</ol>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="hands-on-examples-using-bain.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span></code></pre></div>
+<pre><code>## Bayesian informative hypothesis testing for an object of class lavaan:
+## 
+##    Fit    Com   BF.u    BF.c    PMPa  PMPb 
+## H1 69.899 0.463 150.871 150.871 0.792 0.788
+## H2 3.045  0.090 33.858  33.858  0.178 0.177
+## H3 0.069  0.012 5.850   6.210   0.031 0.031
+## Hu                                    0.005
+## 
+## Hypotheses:
+##   H1: A~B&gt;A~peabody=A~age=0
+##   H2: A~B&gt;A~peabody&gt;A~age=0
+##   H3: A~B&gt;A~peabody&gt;A~age&gt;0
+## 
+## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Summary: estimates and credibility intervals</li>
+</ol>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="hands-on-examples-using-bain.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(y, <span class="at">ci =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>##    Parameter   n     Estimate          lb         ub
+## 1      A=~Ab 240  0.711205262  0.64424171 0.77816881
+## 2      A=~Al 240  0.811775528  0.76376372 0.85978734
+## 3      A=~Af 240  0.837770094  0.79496009 0.88058010
+## 4      A=~An 240  0.906287871  0.87719307 0.93538268
+## 5      A=~Ar 240  0.698701975  0.62953799 0.76786596
+## 6      A=~Ac 240  0.873484275  0.83789531 0.90907324
+## 7      B=~Bb 240  0.765919628  0.70771871 0.82412054
+## 8      B=~Bl 240  0.647765959  0.56891562 0.72661629
+## 9      B=~Bf 240  0.810246503  0.76049539 0.85999762
+## 10     B=~Bn 240  0.887803097  0.85301152 0.92259468
+## 11     B=~Br 240  0.720382073  0.65386367 0.78690047
+## 12     B=~Bc 240  0.828276665  0.78202772 0.87452561
+## 13       A~B 240  0.788751775  0.72999714 0.84750641
+## 14     A~age 240 -0.000478606 -0.09265311 0.09169589
+## 15 A~peabody 240 -0.015527151 -0.10769273 0.07663843</code></pre>
+</div>
+<div id="multiple-group-regression" class="section level3" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Multiple group regression</h3>
+<ol style="list-style-type: decimal">
+<li>Speficy the model and execute the analysis:</li>
+</ol>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="hands-on-examples-using-bain.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  Specify and fit the confirmatory factor model</span></span>
+<span id="cb90-2"><a href="hands-on-examples-using-bain.html#cb90-2" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
+<span id="cb90-3"><a href="hands-on-examples-using-bain.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="st">    postnumb ~ prenumb + peabody </span></span>
+<span id="cb90-4"><a href="hands-on-examples-using-bain.html#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
+<span id="cb90-5"><a href="hands-on-examples-using-bain.html#cb90-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign labels to the groups to be used when formulating</span></span>
+<span id="cb90-6"><a href="hands-on-examples-using-bain.html#cb90-6" aria-hidden="true" tabindex="-1"></a><span class="co"># hypotheses</span></span>
+<span id="cb90-7"><a href="hands-on-examples-using-bain.html#cb90-7" aria-hidden="true" tabindex="-1"></a>sesamesim<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(sesamesim<span class="sc">$</span>sex, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;boy&quot;</span>, <span class="st">&quot;girl&quot;</span>))</span>
+<span id="cb90-8"><a href="hands-on-examples-using-bain.html#cb90-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the multiple group regression model</span></span>
+<span id="cb90-9"><a href="hands-on-examples-using-bain.html#cb90-9" aria-hidden="true" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">sem</span>(model3, <span class="at">data =</span> sesamesim, <span class="at">std.lv =</span> <span class="cn">TRUE</span>, <span class="at">group =</span> <span class="st">&quot;sex&quot;</span>)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Display the estimates and specify an object containing the hypotheses:</li>
+</ol>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="hands-on-examples-using-bain.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(fit3)</span></code></pre></div>
+<pre><code>##      postnumb~prenumb      postnumb~peabody    postnumb~~postnumb 
+##                 0.660                 0.173                85.644 
+##            postnumb~1   postnumb~prenumb.g2   postnumb~peabody.g2 
+##                21.645                 0.723                 0.052 
+## postnumb~~postnumb.g2         postnumb~1.g2 
+##                80.068                26.715</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="hands-on-examples-using-bain.html#cb93-1" aria-hidden="true" tabindex="-1"></a>hypotheses3 <span class="ot">&lt;-</span></span>
+<span id="cb93-2"><a href="hands-on-examples-using-bain.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;postnumb~prenumb.boy = postnumb~prenumb.girl &amp; postnumb~peabody.boy = postnumb~peabody.girl;</span></span>
+<span id="cb93-3"><a href="hands-on-examples-using-bain.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="st"> postnumb~prenumb.boy &lt; postnumb~prenumb.girl &amp; postnumb~peabody.boy &lt; postnumb~peabody.girl</span></span>
+<span id="cb93-4"><a href="hands-on-examples-using-bain.html#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Set seed and call <code>bain</code></li>
+</ol>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="hands-on-examples-using-bain.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb94-2"><a href="hands-on-examples-using-bain.html#cb94-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">bain</span>(fit3, hypotheses3, <span class="at">fraction =</span> <span class="dv">1</span>, <span class="at">standardize =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Print the results</li>
+</ol>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="hands-on-examples-using-bain.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span></code></pre></div>
+<pre><code>## Bayesian informative hypothesis testing for an object of class lavaan:
+## 
+##    Fit   Com   BF.u   BF.c   PMPa  PMPb 
+## H1 7.786 0.189 41.199 41.199 0.996 0.972
+## H2 0.019 0.106 0.181  0.165  0.004 0.004
+## Hu                                 0.024
+## 
+## Hypotheses:
+##   H1: postnumb~prenumb.boy=postnumb~prenumb.girl&amp;postnumb~peabody.boy=postnumb~peabody.girl
+##   H2: postnumb~prenumb.boy&lt;postnumb~prenumb.girl&amp;postnumb~peabody.boy&lt;postnumb~peabody.girl
+## 
+## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Summary: estimates and credibility intervals</li>
+</ol>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="hands-on-examples-using-bain.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(y, <span class="at">ci =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>##               Parameter   n   Estimate          lb        ub
+## 1  postnumb~prenumb.boy 115 0.53181375  0.38134118 0.6822863
+## 2  postnumb~peabody.boy 115 0.23097972  0.06511841 0.3968410
+## 3        postnumb~1.boy 115 1.66487431  1.11918686 2.2105618
+## 4 postnumb~prenumb.girl 125 0.63788102  0.51532021 0.7604418
+## 5 postnumb~peabody.girl 125 0.06298202 -0.09071110 0.2166751
+## 6       postnumb~1.girl 125 2.20546228  1.63305518 2.7778694</code></pre>
+</div>
+</div>
+<div id="named" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Using <code>bain</code> with a named vector</h2>
+<p>If a <code>named vector</code> object is used, the main output table is labeled:
+“Bayesian informative hypothesis testing for an object
+of class numeric” (which denotes that <code>named vector</code> input was used).</p>
+<p><strong>Options:</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li>Bayesian ANOVA</li>
+<li>Bayesian Welch’s ANOVA (unequal within group variances)</li>
+<li>Bayesian robust (against non-normality) ANOVA (unequal within group variances)</li>
+<li>Bayesian ANCOVA</li>
+<li>Bayesian repeated measures analysis (one within factor)</li>
+<li>Bayesian repeated measures analysis (within between design)</li>
+<li>Bayesian one group logistic regression (counterpart of multiple
+regression)</li>
+<li>Bayesian multiple group logistic regression (counterpart of ANCOVA)</li>
+<li>Bayesian multiple regression with missing data</li>
+<li>Bayesian confirmatory factor analysis
+.
+.(add multilevel models here maybe?)
+.</li>
+</ol>
+<p><strong>Main steps:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Execute a statistical analysis.</li>
+</ol>
+<p>In case of a single group analysis, the
+following information has to be extracted from the statistical analysis and
+supplied to <code>bain</code>:</p>
+<ol style="list-style-type: lower-alpha">
+<li>A vector containing estimates of the parameters
+used to specify <code>hypotheses</code>;</li>
+<li>A list containing the covariance matrix of these parameters; and,</li>
+<li>The sample size used for estimation of the parameters. Note that,
+due to missing values this sample size may be smaller than the total sample
+size.</li>
+</ol>
+<p>In case of a multiple group
+analysis, the following information has to be extracted from the statistical
+analysis and supplied to <code>bain</code>:</p>
+<ol style="list-style-type: lower-alpha">
+<li>A vector containing estimates of the group specific
+parameters possibly augmented with the
+estimates of parameters that are shared by the groups. The structure
+of this vector is
+[parameters of group 1, parameters of group 2, …, the parameters that
+are shared by the groups];</li>
+<li>A list containing, per group, the covariance
+matrix of the parameters corresponding to the group at hand and, possibly,
+the augmented parameters. In the rows and columns of each covariance matrix
+the parameters of the group at hand come first, possibly followed by the
+augmented parameters.</li>
+<li>Per group the sample size used for estimation of the parameters. Note that,
+due to missing values this sample size may be smaller than the total sample
+size per group.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>Assign names to the estimates
+using <code>names(estimates)&lt;-c()</code>. Note that, <code>names</code> is a
+character vector containing new names for the estimates in <code>estimates</code>.
+Each name has to start with a letter, and may consist of “letters,”
+“numbers,” “<code>.</code>” “<code>_</code>,” “<code>:</code>” “<code>~</code>,” “<code>=~</code>,” and “<code>~1</code>.”
+These names are
+used to specify <code>hypotheses</code>
+(see below). An example is <code>names &lt;- c("a", "b", "c")</code>.</li>
+<li><code>set.seed(seed)</code>. Set <code>seed</code> equal to an integer
+number to create a repeatable random number sequence. <code>bain</code> uses sampling to compute Bayes factors and posterior model probabilities. It is therefore recommended to run analyses with two different seeds to ensure stability of the results.</li>
+<li><code>results &lt;- bain(estimates, hypotheses, n=., Sigma=., group_parameters = 2, joint_parameters = 0, fraction = 1)</code>
+executes <code>bain</code> with the
+following arguments:</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><code>estimates</code> A named vector with parameter estimates.</li>
+<li><code>hypotheses</code> A character string containing the informative
+hypotheses to evaluate (the specification is elaborated below).</li>
+<li><code>n</code> A vector containing the sample size of each group in the
+analysis. See, Hoijtink, Gu, and Mulder (2019), for an elaboration of the
+difference between one and multiple group analyses. A multiple group
+analysis is required when group specific parameters are used to formulate
+<code>hypotheses</code>. Examples are the Student’s and Welch’s t-test, ANOVA, and
+ANCOVA. See the Examples section for elaborations of the specification of
+multiple group analyses when a named vector is input for <code>bain</code>.</li>
+<li><code>Sigma</code> A list of covariance matrices. In case of one group
+analyses the list contains one covariance matrix. In case of multiple group
+analyses the list contains one covariance matrix for each group. See the
+Examples section and Hoijtink, Gu, and Mulder (2019) for further instructions.</li>
+<li><code>group_parameters</code> The number of group specific parameters. In,
+for example, an ANOVA with three groups, <code>estimates</code> will contain three
+sample means, <code>group_parameters = 1</code> because each group is characterized
+by one mean, and <code>joint_parameters = 0</code> because there are no parameters
+that apply to each of the groups. In, for example, an ANCOVA with three
+groups and two covariates, <code>estimates</code> will contain five parameters
+(first the three adjusted means, followed by the regression coefficients
+of the two covariates),
+<code>group_parameters = 1</code> because each group is characterized by one
+adjusted mean, and <code>joint_parameters = 2</code> because there are two
+regression coefficients that apply to each group. In, for example, a repeated
+measures design with four repeated measures and two groups (a between factor
+with two levels and a within factor with four levels) <code>estimates</code> will
+contain eight means (first the four for group 1, followed by the four
+for group 2), <code>group_parameters = 4</code>
+because each group is characterized by four means and <code>joint_parameters = 0</code> because there are no parameters that apply to each of the groups.</li>
+<li><code>joint_parameters</code> In case of one group <code>joint_parameters = 0</code>. In case of two or more groups, the number of parameters in
+<code>estimates</code> shared by the groups. In, for example, an ANCOVA, the number
+of <code>joint_parameters</code> equals the number of covariates.</li>
+<li><code>fraction = 1</code> A number representing the fraction of information in the data used to construct the prior distribution. The default value 1 denotes the minimal fraction, 2 denotes twice the minimal fraction, etc.</li>
+</ol>
+<ol start="5" style="list-style-type: decimal">
+<li><code>print(results)</code> Print the results of an analysis with
+<code>bain</code>.</li>
+<li><code>summary(results, ci=0.95)</code> Present estimates and credibility intervals for the parameters used to specify the <code>hypotheses</code>. <code>ci</code> can be used to specify the confidence level of the credibility intervals.</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-to-bain.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sensitivity-analysis-using-bain.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["gitbook-template-.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

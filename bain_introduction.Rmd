@@ -1,24 +1,21 @@
 
 # (PART) `R` package `bain` {-}
 
-# An introduction to `bain` {-}
+# Introduction to `bain` {-}
 
-`bain` is an acronym for "Bayesian informative hypotheses evaluation".
-It uses the Bayes factor [@kass1995bayes] to evaluate hypotheses specified using *equality* and *inequality* constraints among (linear combinations of) parameters in a wide range of statistical models. 
+`bain` is an acronym for **"Bayesian informative hypotheses evaluation"**.
+It uses the *Bayes factor* [@kass1995bayes] to evaluate hypotheses specified using *equality* and *inequality* constraints among (linear combinations of) parameters in a wide range of statistical models. 
 
 ## Available tutorials
 
 Two tutorials are retrievable from the `bain` [website](https://informative-hypotheses.sites.uu.nl/software/bain/) under the section **Tutorials**.
 
-The first introducing Bayesian evaluation of informative hypotheses is provided by @e575e990fdef4c469a1c19a210d58e2f. By reading the tutorial in combination with executing the analyses contained in `easyBFtutorial.R` and `BFtutorial.R` (available on the abovementioned website) you will quickly learn the basics of Bayesian hypothesis evaluation. 
+The first introducing Bayesian evaluation of informative hypotheses is provided by @hoijtink2019tutorial. By reading the tutorial in combination with executing the analyses contained in `easyBFtutorial.R` and `BFtutorial.R` (available on the aforementioned website) you will quickly learn the basics of Bayesian hypothesis evaluation. 
 
-The second containing introduction to Bayesian evaluation of informative hypotheses in the context of structural equation models is provided by Van Lissa, C., Gu, X., Mulder, J., Rosseel, Y., van Zundert, C. and Hoijtink, H. (2020), Structural Equation Modelling, 28, 292-301^[Users are
-advised to read these tutorials and this vignette before using `bain`.]. 
+The second containing introduction to Bayesian evaluation of informative hypotheses in the context of structural equation models is provided by @van2021teacher^[Users areadvised to read these tutorials and this vignette before using `bain`.]. 
 
-**Users are
-advised to read these tutorials and this vignette before using `bain`**.
 
-An overview of all other relevant  papers concearning informative hypotheses testing and the package `bain` can be found [here](https://informative-hypotheses.sites.uu.nl/publications/).
+An overview of all other relevant  papers concerning informative hypotheses testing and the package `bain` can be found [here](https://informative-hypotheses.sites.uu.nl/publications/).
 
 ## Usage
 
@@ -29,7 +26,7 @@ This is how a general call to `bain` looks like:
 
 ### Arguments
 
-`x`
+- `x`
 An R object containing the outcome of a statistical analysis. Currently, the following objects can be processed:
 
 1) `t_test()` objects (Student's t-test, Welch's t-test, paired samples t-test, one-group t-test, equivalence test). Note that, `t_test` can be used in the same way as `t.test`.
@@ -37,187 +34,29 @@ An R object containing the outcome of a statistical analysis. Currently, the fol
 3) `lavaan` objects generated with the `sem()`, `cfa()`, and
 `growth` functions.
 4) A named vector containing the estimates resulting from a statistical analysis. Using this option triggers the `bain.default()` method. Note that, named means that each estimate has to be named such that it can be referred to in hypotheses.
-5) Wrapper functions for repeated measures ANOVA(...) and linear two-level models built with `lmer` (TBA when finished)
+5) Wrapper functions for repeated measures ANOVA(...) and linear two-level models built with `lmer` (TBA when finished).
 
-`hypothesis` A character string containing the informative hypotheses to evaluate 
+- `hypothesis` A character string containing the informative hypotheses to evaluate 
 (see below the section on **"Specification of Hypotheses"**).
 
-`fraction = 1` A number representing the fraction of information in the data used to construct the prior distribution (see, for example, @gu2018approximated). The default value 1 denotes the minimal fraction, 2 denotes twice the minimal fraction, etc. The examples in the next chapter show how the `fraction` can be employed to execute a sensitivity analysis. See also @e575e990fdef4c469a1c19a210d58e2f for more details.
+- `fraction = 1` A number representing the fraction of information in the data used to construct the prior distribution (see, for example, @gu2018approximated). The default value 1 denotes the minimal fraction, 2 denotes twice the minimal fraction, etc. The examples in the next chapter show how the `fraction` can be employed to execute a sensitivity analysis. See also @hoijtink2019tutorial for more details.
 
-`...`	Additional arguments (see next chapter).
+- `...`	Additional arguments (see next chapter).
 
-### Using `bain` with a `lm` or `t_test` object 
-
-The following steps need to be executed:
-
-1) `x <- lm()` or `x <- t_test()`. Execute an analysis with
-`lm` or `t_test`. See the Examples section below for a complete elaboration 
-of the
-calls to `lm` and `t_test` that can be processed by `bain`.
-Note that, `lm` and `t_test` will apply list-wise deletion if there
-are cases with missing values in the variables used.
-2) If `lm()` is used, display the estimates and their names using the command `coef(x)`. (Unique abbreviations of) the names will be used to specify `hypotheses`. If `t_test()` is used, hypotheses have to be specified using the names `x`, `y`, and `difference` (see Examples 1a throught 1e which can be found below).
-3) `set.seed(seed)`. Set `seed` equal to an integer 
-number to create a repeatable random number sequence. `bain` uses sampling to compute Bayes factors and posterior model probabilities. It is therefore recommended to run analyses with two different seeds to ensure stability of the results.
-4) `results <- bain(x,hypotheses,fraction = 1)` or `results <-
-bain(x,hypotheses,fraction = 1,standardize = FALSE)`. The first call to 
-`bain` is used
-in case of `lm` implementations of ANOVA, ANCOVA, and `t_test`. The
-second call to `bain` is used in case of `lm` implementations of
-multiple regression. With `standardize = TRUE` hypotheses with respect
-to standardized regression coefficients are evaluated. With `standardize
-= FALSE` hypotheses with respect to unstandardized regression coefficients
-are evaluated. `fraction = 1`represents the fraction of information in the data used to construct the prior distribution. The default value 1 denotes the minimal fraction, 2 denotes twice the minimal fraction, etc. Example 2d. below shows how `fraction` can be employed to execute a sensitivity analysis. See also Hoijtink, Mulder, van Lissa, and Gu, 2019). 
-5) `print(results)` Print the results of an analysis with
-`bain`.
-6) `summary(results, ci=0.95)` Present estimates and credibility intervals for the parameters used to specify the `hypotheses`. `ci` can be used to specify the confidence level of the credibility intervals.
-
-
-### Using `bain` with a `lavaan` object 
-
-The following steps need to be executed:
-
-1) `x <- sem()` or `x <- cfa()` or `x <- growth()`. 
-Execute an analysis with the sem, cfa, or growth functions
-implemented in [`lavaan`](https://lavaan.ugent.be).
-Note that, by default, 
-`lavaan` will apply list-wise deletion if there are cases with
-missing values in the variables used. An imputation based method
-for dealing with missing values tailored to Bayesian hypothesis
-evaluation is illustrated in Section 4 "Examples Using 
-a Named Vector" in Example h. (based on Hoijtink, Gu, Mulder,
-and Rosseel, 2019). If an analysis with `lavaan` is executed using `missing = "fiml"` the sample size is not corrected for the presence of missing values. This will affect (bias) the evaluation of hypotheses specified using (about) equality constraints.  
-2) Specify a `lavaan` model using the `model <- ...` command. In case
-of multiple group models, only models **without** between group 
-restrictions can be processed by `bain` with a `lavaan` object
-as input.
-3) Display the estimates and their names using the command `coef(x)`. 
-Only parameters who's names contain `~` (regression coefficients),
-`~1` (intercepts), or `=~` (factor loadings) can be used in the 
-specification of hypotheses. (Unique abbreviations of) the names 
-can be used to specify `hypotheses`. For multiple group analyses
-the names have to end with a group label `.grp`. Group labels
-can be assigned using commands like
-`sesamesim$sex <- factor(sesamesim$sex, labels = c("boy", "girl"))`. 
-If in a `lavaan` model parameters are labeled, e.g., as in 
-`model <- 'age ~ c(a1, a2)*peabody + c(b1, b2)*1` then the labels
-have to be used in the specification of hypotheses.
-4) `set.seed(seed)`. Set `seed` equal to an integer 
-number to create a repeatable random number sequence. `bain` uses sampling to compute Bayes factors and posterior model probabilities. It is therefore recommended to run analyses with two different seeds to ensure stability of the results.
-5) `results <- bain(x,hypotheses,fraction = 1,standardize = FALSE)`.
-With `standardize = TRUE` hypotheses with respect
-to standardized coefficients are evaluated. With `standardize
-= FALSE` hypotheses with respect to unstandardized coefficients
-are evaluated. `fraction = 1` represents the fraction of information in the data used to construct the prior distribution. The default value 1 denotes the minimal fraction, 2 denotes twice the minimal fraction, etc. Example 2d. below shows how `fraction` can be employed to execute a sensitivity analysis. See also Hoijtink, Mulder, van Lissa, and Gu, 2019). 
-6) `print(results)` Print the results of an analysis with
-`bain`.
-7)  `summary(results, ci=0.95)` Present estimates and credibility intervals for the parameters used to specify the `hypotheses`. `ci` can be used to specify the confidence level of the credibility intervals.
-
-### Using `bain` with a named vector 
-
-The following steps need to be executed:
-
-1) Execute a statistical analysis. 
-
-In case of a single group analysis, the
-following information has to be extracted from the statistical analysis and
-supplied to `bain`: 
-
-a) A vector containing estimates of the parameters
-used to specify `hypotheses`; 
-b) A list containing the covariance matrix of these parameters; and, 
-c) The sample size used for estimation of the parameters. Note that,
-due to missing values this sample size may be smaller than the total sample
-size.
-
-In case of a multiple group
-analysis, the following information has to be extracted from the statistical
-analysis and supplied to `bain`: 
-
-a) A vector containing estimates of the group specific
-parameters possibly augmented with the
-estimates of parameters that are shared by the groups. The structure 
-of this vector is 
-[parameters of group 1, parameters of group 2, ..., the parameters that 
-are shared by the groups];
-b) A list containing, per group, the covariance
-matrix of the parameters corresponding to the group at hand and, possibly,
-the augmented parameters. In the rows and columns of each covariance matrix 
-the parameters of the group at hand come first, possibly followed by the 
-augmented parameters.
-c) Per group the sample size used for estimation of the parameters. Note that,
-due to missing values this sample size may be smaller than the total sample
-size per group.
-
-2) Assign names to the estimates
-using `names(estimates)<-c()`. Note that, `names` is a
-character vector containing new names for the estimates in `estimates`.
-Each name has to start with a letter, and may consist of "letters",
-"numbers", "`.`", "`_`", "`:`", "`~`", "`=~`", and "`~1`". 
-These names are 
-used to specify `hypotheses`
-(see below). An example is `names <- c("a", "b", "c")`.
-3) `set.seed(seed)`. Set `seed` equal to an integer 
-number to create a repeatable random number sequence. `bain` uses sampling to compute Bayes factors and posterior model probabilities. It is therefore recommended to run analyses with two different seeds to ensure stability of the results.
-4) `results <- bain(estimates, hypotheses, n=., Sigma=.,
-group_parameters = 2, joint_parameters = 0, fraction = 1)` 
-executes `bain` with the
-following arguments:
-
-a) `estimates` A named vector with parameter estimates.
-b) `hypotheses` A character string containing the informative
-hypotheses to evaluate (the specification is elaborated below).
-c) `n` A vector containing the sample size of each group in the
-analysis. See, Hoijtink, Gu, and Mulder (2019), for an elaboration of the
-difference between one and multiple group analyses. A multiple group
-analysis is required when group specific parameters are used to formulate
-`hypotheses`. Examples are the Student's and Welch's t-test, ANOVA, and
-ANCOVA. See the Examples section for elaborations of the specification of
-multiple group analyses when a named vector is input for `bain`.
-d) `Sigma` A list of covariance matrices. In case of one group
-analyses the list contains one covariance matrix. In case of multiple group
-analyses the list contains one covariance matrix for each group. See the
-Examples section and Hoijtink, Gu, and Mulder (2019) for further instructions.
-e) `group_parameters` The number of group specific parameters.  In,
-for example, an ANOVA with three groups, `estimates` will contain three
-sample means, `group_parameters = 1` because each group is characterized
-by one mean, and `joint_parameters = 0` because there are no parameters
-that apply to each of the groups. In, for example, an ANCOVA with  three
-groups and two covariates, `estimates` will contain five parameters
-(first the three adjusted means, followed by the regression coefficients 
-of the two covariates),
-`group_parameters = 1` because each group is characterized by one
-adjusted mean, and `joint_parameters = 2` because there are two
-regression coefficients that apply to each group. In, for example, a repeated
-measures design with four repeated measures and two groups (a between factor
-with two levels and a  within factor with four levels) `estimates` will
-contain eight means (first the four for group 1, followed by the four
-for group 2), `group_parameters = 4`
-because each group is characterized by four means and `joint_parameters
-= 0` because there are no parameters that apply to each of the groups.
-f) `joint_parameters` In case of one group `joint_parameters =
-0`. In case of two or more groups, the number of parameters in
-`estimates` shared by the groups. In, for example, an ANCOVA, the number
-of `joint_parameters` equals the number of covariates.
-g) `fraction = 1` A number representing the fraction of information in the data used to construct the prior distribution. The default value 1 denotes the minimal fraction, 2 denotes twice the minimal fraction, etc. Example 2d. below shows how `fraction` can be employed to execute a sensitivity analysis. See also Hoijtink, Mulder, van Lissa, and Gu, 2019). 
-5) `print(results)` Print the results of an analysis with
-`bain`.
-6)  `summary(results, ci=0.95)` Present estimates and credibility intervals for the parameters used to specify the `hypotheses`. `ci` can be used to specify the confidence level of the credibility intervals.
 
 ### The specification of `hypotheses` 
 
-`hypotheses` is a character string that specifies which informative
+`hypotheses` is a character string that specifies which (informative)
 hypotheses have to be evaluated. A simple example is `hypotheses <- "a >
 b > c; a = b = c;"` which specifies two hypotheses using three estimates with
 names "a", "b", and "c", respectively.
 
-The hypotheses specified have to adhere to the following rules **`bain` may still run if you
-deviate from the rules, however, the output will be nonsense**:
+The hypotheses specified have to adhere to the following rules (`bain` may still run if you
+deviate from the rules, however, the output will be nonsense):
 
 * When using `bain` with a `lm` or `t_test` or `lavaan` object, 
 (unique abbreviations of) the names
-displayed by `coef(x)` have to be used (but see the section "Using bain
-with a lavaan object" for additional instructions if multiple group
+displayed by `coef(x)` have to be used (but see the section \@ref(lavaan) for additional instructions if multiple group
 analyses are executed and/or parameters are labeled). If, 
 for example, the names are `cat` and `dog`, `c`
 and `d ` would be unique abbreviations. If, for example, the names are `cato` 
@@ -251,7 +90,7 @@ these terms mean will be elaborated below.
 
 
 **The set of hypotheses has to be compatible.** For the statistical
-background of this requirement see Gu, Mulder, Hoijtink (2019). Usually the
+background of this requirement see @gu2018approximated. Usually the
 sets of hypotheses specified by researchers are compatible, and if not,
 `bain` will return an error message. The following steps can be used to
 determine if a set of hypotheses is compatible:
@@ -299,8 +138,7 @@ probability including the unconstrained hypothesis, and posterior model
 probability of each hypothesis specified and their joint complement. 
 Note that, all the posterior model probabilities are computed from
 the Bayes factors of each hypothesis versus the unconstrained hypothesis.
-In Hoijtink, Mulder,
-van Lissa, and Gu (2019) it is elaborated how these quantities 
+In @hoijtink2019tutorial it is elaborated how these quantities 
 (and the other
 output presented below) should be interpreted. Additionally, using
 `summary(results, ci=0.95)`, a descriptives matrix can be obtained
@@ -343,7 +181,7 @@ posterior distribution.
 * `results$n` displays the sample sizes per group.
 * `results$independent_restrictions` displays the number of
 independent constraints in the set of hypotheses under consideration. Note that,
-in Gu, Mulder, and Hoijtink (2018) en Hoijtink, Gu, and Mulder (2019) the
+in @gu2018approximated and @hoijtink2019bayesian the
 definition given was misprinted (besides R and S also r and s should have been
 added to the definition).
 * `results$fit$Fit_eq` displays the fit of the equality constrained
