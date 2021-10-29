@@ -1,1 +1,55 @@
 # Sensitivity analysis using `bain`
+Load `bain`:
+```{r}
+library(bain)
+```
+
+Please see @hoijtink2019tutorial for further elaborations.
+
+## An example using ANOVA
+
+Note that, most the code below can be replaced by a call to the function `bain_sensitivity`. See the help file for this function for further instructions (call `?bain_sensitivity`).
+
+1) Make a factor of variable site:
+```{r}
+sesamesim$site <- as.factor(sesamesim$site)
+```
+2) Execute an analysis of variance using `lm()` which, due to the -1, returns estimates of the means per group:
+```{r}
+anov <- lm(postnumb~site-1,sesamesim)
+```
+
+3) Set a seed value & call `bain`:
+```{r}
+set.seed(100)# test hypotheses with bain
+results1 <- bain(anov, "site1=site2=site3=site4=site5; site2>site5>site1>
+site3>site4", fraction = 1)
+```
+ 
+4) Print the results:
+```{r}
+print(results1)
+```
+
+5) Summary: estimates and credibility intervals:
+```{r}
+summary(results1, ci = 0.95)
+```
+
+6) Execute a **sensitivity analysis**:
+
+ - Using twice the minimal fraction:
+```{r}
+set.seed(100)
+results2 <- bain(anov, "site1=site2=site3=site4=site5; site2>site5>site1>
+site3>site4",fraction = 2)
+print(results2)
+```
+
+ - Using three times the minimal fraction
+```{r}
+set.seed(100)
+results3 <- bain(anov, "site1=site2=site3=site4=site5; site2>site5>site1>
+site3>site4",fraction = 3)
+print(results3)
+```
