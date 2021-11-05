@@ -156,7 +156,7 @@
 
 \title{A GitBook template}
 \author{Nikola Sekulovski}
-\date{2021-10-29}
+\date{2021-11-05}
 
 \begin{document}
 \maketitle
@@ -294,7 +294,7 @@ And finally we can also make a nice plot illustrating everything that we did so 
 ## Warning: Use of `results$Lower` is discouraged. Use `Lower` instead.
 \end{verbatim}
 
-\includegraphics{gitbook-template-_files/figure-latex/unnamed-chunk-7-1.pdf}
+\includegraphics{Chapter_2_files/figure-latex/unnamed-chunk-7-1.pdf}
 In this case only two out of 100 CI's do not include the true population mean.
 
 \hypertarget{the-central-limit-theorem}{%
@@ -331,7 +331,7 @@ And now we plot a histogram of the resulting means:
 
 \begin{figure}
 \centering
-\includegraphics{gitbook-template-_files/figure-latex/unnamed-chunk-10-1.pdf}
+\includegraphics{Chapter_2_files/figure-latex/unnamed-chunk-10-1.pdf}
 \caption{\label{fig:unnamed-chunk-10}Histogram of the sampling distribution of the mean}
 \end{figure}
 
@@ -367,8 +367,7 @@ This is how we refer to equations:
 \addcontentsline{toc}{chapter}{(PART) \texttt{R} package \texttt{bain}}
 
 \hypertarget{introduction-to-bain}{%
-\chapter*{\texorpdfstring{Introduction to \texttt{bain}}{Introduction to bain}}\label{introduction-to-bain}}
-\addcontentsline{toc}{chapter}{Introduction to \texttt{bain}}
+\chapter{\texorpdfstring{Introduction to \texttt{bain}}{Introduction to bain}}\label{introduction-to-bain}}
 
 \texttt{bain} is an acronym for \textbf{``Bayesian informative hypotheses evaluation''}.
 It uses the \emph{Bayes factor} (\protect\hyperlink{ref-kass1995bayes}{Kass \& Raftery, 1995}) to evaluate hypotheses specified using \emph{equality} and \emph{inequality} constraints among (linear combinations of) parameters in a wide range of statistical models.
@@ -380,7 +379,7 @@ Two tutorials are retrievable from the \texttt{bain} \href{https://informative-h
 
 The first introducing Bayesian evaluation of informative hypotheses is provided by \protect\hyperlink{ref-hoijtink2019tutorial}{Hoijtink, Mulder, Lissa, \& Gu} (\protect\hyperlink{ref-hoijtink2019tutorial}{2019}). By reading the tutorial in combination with executing the analyses contained in \texttt{easyBFtutorial.R} and \texttt{BFtutorial.R} (available on the aforementioned website) you will quickly learn the basics of Bayesian hypothesis evaluation.
 
-The second containing introduction to Bayesian evaluation of informative hypotheses in the context of structural equation models is provided by \protect\hyperlink{ref-van2021teacher}{Van Lissa et al.} (\protect\hyperlink{ref-van2021teacher}{2021})\footnote{Users areadvised to read these tutorials and this vignette before using \texttt{bain}.}.
+The second containing introduction to Bayesian evaluation of informative hypotheses in the context of structural equation models is provided by \protect\hyperlink{ref-van2021teacher}{Van Lissa et al.} (\protect\hyperlink{ref-van2021teacher}{2021})\footnote{Users are advised to read these tutorials and this vignette before using \texttt{bain}.}.
 
 An overview of all other relevant papers concerning informative hypotheses testing and the package \texttt{bain} can be found \href{https://informative-hypotheses.sites.uu.nl/publications/}{here}.
 
@@ -420,9 +419,9 @@ This is how a general call to \texttt{bain} looks like:
 \begin{itemize}
 \item
   \texttt{hypothesis} A character string containing the informative hypotheses to evaluate
-  (see below the section on \textbf{``Specification of Hypotheses''}).
+  (see section 3.2.2).
 \item
-  \texttt{fraction\ =\ 1} A number representing the fraction of information in the data used to construct the prior distribution (see, for example, \protect\hyperlink{ref-gu2018approximated}{Gu, Mulder, \& Hoijtink} (\protect\hyperlink{ref-gu2018approximated}{2018})). The default value 1 denotes the minimal fraction, 2 denotes twice the minimal fraction, etc. The examples in the next chapter show how the \texttt{fraction} can be employed to execute a sensitivity analysis. See also \protect\hyperlink{ref-hoijtink2019tutorial}{Hoijtink, Mulder, Lissa, \& Gu} (\protect\hyperlink{ref-hoijtink2019tutorial}{2019}) for more details.
+  \texttt{fraction\ =\ 1} A number representing the fraction of information in the data used to construct the prior distribution (see, for example, \protect\hyperlink{ref-gu2018approximated}{Gu, Mulder, \& Hoijtink} (\protect\hyperlink{ref-gu2018approximated}{2018})). The default value 1 denotes the minimal fraction, 2 denotes twice the minimal fraction, etc. The examples in chapter 5 show how the \texttt{fraction} can be employed to execute a sensitivity analysis. See also \protect\hyperlink{ref-hoijtink2019tutorial}{Hoijtink, Mulder, Lissa, \& Gu} (\protect\hyperlink{ref-hoijtink2019tutorial}{2019}) for more details.
 \item
   \texttt{...} Additional arguments (see next chapter).
 \end{itemize}
@@ -616,6 +615,118 @@ hypotheses. In these cases the corresponding entry in \texttt{results\$BFmatrix}
 only be interpreted if repeated analyses using different seeds
 (see \texttt{set.seed()}) render about the same results.
 
+\hypertarget{example-output}{%
+\subsubsection{Example output}\label{example-output}}
+
+The following example is aimed at illustrating the output from \texttt{bain}. The specifics on how to actually use \texttt{bain} for testing hypotheses about the parameters of different statistical models are given in the next chapter.
+
+In this example we will use \texttt{bain} to test the following two (informative) hypotheses concerning the parameters of a multiple linear regression model, with three (continuous) predictors:
+
+\begin{itemize}
+\tightlist
+\item
+  \(H_1: \beta_1 > 0;\; \beta_2 > 0;\; \beta_3 >0\)
+\item
+  \(H_2: \beta_1 = \beta_2 < \beta_3\)
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\tightlist
+\item
+  The default output:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(results)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Bayesian informative hypothesis testing for an object of class lm (continuous predictors):
+## 
+##    Fit   Com   BF.u   BF.c    PMPa  PMPb 
+## H1 0.871 0.032 27.295 204.167 0.747 0.727
+## H2 2.637 0.285 9.247  9.247   0.253 0.246
+## Hu                                  0.027
+## 
+## Hypotheses:
+##   H1: age>0&peabody>0&prenumb>0
+##   H2: age=peabody<prenumb
+## 
+## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.
+\end{verbatim}
+
+The output consists of several parts:
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  On the top, it is stated from which type of \texttt{R} object the parameter estimates come from;
+\item
+  The most important part of the output are the results from \texttt{bain} presented in the middle. Here, for each hypothesis, the fit, complexity, the BF of the hypothesis against the unconstrained, the BF of the hypothesis against it's compliment, and the posterior model probabilities are printed in each row. For example for \(H_1 =\beta_1 > 0;\; \beta_2 > 0;\; \beta_3 >0\), the fit and complexity are equal to 0.871 and 0.032, respectively, resulting in a \(BF_{1u}\) = 27.3. The value for \(BF_{1u}\) suggests that \(H_1\) is 27 times as likely compared to \(H_u\). The value for \texttt{PMPa} suggests that the posterior probability of \(H_1\) \emph{given} the data is around 0.75, assuming equal prior probabilities. The value for \texttt{PMPb} suggests that the posterior probability of \(H_1 + H_u\) \emph{given} the data is around 0.73, assuming equal prior probabilities. If we would like to obtain the BF for \(H_1\) against \(H_2\) (\(BF_{12}\)), then we just need to take the ratio of the two BF's against the unconstrained hypothesis. In this case, \[BF_{12} = \frac{27.3}{9.2} \approx 3\]
+\end{enumerate}
+
+which means that the support in the data is 3 times larger for \(H_1\) compared to \(H_2\);
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  The tested hypotheses are printed in the output, just below the results;
+\item
+  The output ends with a note explaining the difference between the two types BF's printed in the main part of the results (b).
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Descriptive matrix:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(results)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Parameter   n   Estimate          lb        ub
+## 1       age 240 0.05797594 -0.04043979 0.1563917
+## 2   peabody 240 0.14781779  0.03457188 0.2610637
+## 3   prenumb 240 0.56740695  0.46067277 0.6741411
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Obtaining the separate values contained within the \texttt{results} object. Here we only present how to obtain the value for the fit, of course, as mentioned above different values contained within the \texttt{results} object can be obtained by changing what comes after the \texttt{\$} in the code below:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{results}\SpecialCharTok{$}\NormalTok{fit}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Fit_eq    Com_eq    Fit_in     Com_in       Fit        Com         BF
+## H1 1.000000 1.0000000 0.8705764 0.03189549 0.8705764 0.03189549 204.167441
+## H2 2.636926 0.5703344 1.0000000 0.50000000 2.6369262 0.28516720   9.246948
+## Hu       NA        NA        NA         NA        NA         NA         NA
+##         PMPa       PMPb      BF.u       BF.c
+## H1 0.7469474 0.72705089 27.294657 204.167441
+## H2 0.2530526 0.24631200  9.246948   9.246948
+## Hu        NA 0.02663711        NA         NA
+\end{verbatim}
+
 \hypertarget{hands-on-examples-using-bain}{%
 \chapter{\texorpdfstring{Hands-on examples using \texttt{bain}}{Hands-on examples using bain}}\label{hands-on-examples-using-bain}}
 
@@ -790,7 +901,7 @@ labeled: \emph{``Bayesian informative hypothesis testing for an objectof class t
 \CommentTok{\# set a seed value}
 \FunctionTok{set.seed}\NormalTok{(}\DecValTok{100}\NormalTok{)}
 \CommentTok{\# test hypotheses with bain. The names of the means are x and y.}
-\NormalTok{results }\OtherTok{\textless{}{-}} \FunctionTok{bain}\NormalTok{(ttest, }\StringTok{"x = y; x \textgreater{} y; x \textless{} y"}\NormalTok{)}
+\NormalTok{results }\OtherTok{\textless{}{-}} \FunctionTok{bain}\NormalTok{(ttest, }\StringTok{"x = y; x \textgreater{} y; x \textless{} y"}\NormalTok{, }\AttributeTok{fraction =} \DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -857,7 +968,7 @@ labeled: \emph{``Bayesian informative hypothesis testing for an objectof class t
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wtest }\OtherTok{\textless{}{-}} \FunctionTok{t\_test}\NormalTok{(x,y,}\AttributeTok{paired =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{var.equal =} \ConstantTok{FALSE}\NormalTok{) }\CommentTok{\#without assumed eq. variances}
+\NormalTok{wtest }\OtherTok{\textless{}{-}} \FunctionTok{t\_test}\NormalTok{(x,y,}\AttributeTok{paired =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{var.equal =} \ConstantTok{FALSE}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -871,9 +982,7 @@ labeled: \emph{``Bayesian informative hypothesis testing for an objectof class t
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# set a seed value}
 \FunctionTok{set.seed}\NormalTok{(}\DecValTok{100}\NormalTok{)}
-\CommentTok{\# test hypotheses with bain. The names of the means are x and y.}
 \NormalTok{results }\OtherTok{\textless{}{-}} \FunctionTok{bain}\NormalTok{(wtest, }\StringTok{"x = y; x \textgreater{} y; x \textless{} y"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -941,7 +1050,6 @@ labeled: \emph{``Bayesian informative hypothesis testing for an objectof class t
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# compare the pre with the post measurements}
 \NormalTok{pttest }\OtherTok{\textless{}{-}} \FunctionTok{t\_test}\NormalTok{(sesamesim}\SpecialCharTok{$}\NormalTok{prenumb,sesamesim}\SpecialCharTok{$}\NormalTok{postnumb,}\AttributeTok{paired =} \ConstantTok{TRUE}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
@@ -1043,7 +1151,7 @@ labeled: \emph{``Bayesian informative hypothesis testing for an objectof class t
 \CommentTok{\# set a seed value}
 \FunctionTok{set.seed}\NormalTok{(}\DecValTok{100}\NormalTok{)}
 \CommentTok{\# test hypotheses with bain versus the reference value 30. Use x to refer to the mean}
-\NormalTok{results }\OtherTok{\textless{}{-}} \FunctionTok{bain}\NormalTok{(ttest\_one\_gr, }\StringTok{"x=30; x\textgreater{}30; x\textless{}30"}\NormalTok{)}
+\NormalTok{results }\OtherTok{\textless{}{-}} \FunctionTok{bain}\NormalTok{(ttest\_one\_gr, }\StringTok{"x=30; x\textgreater{}30; x\textless{}30"}\NormalTok{, }\AttributeTok{fraction =} \DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1064,11 +1172,11 @@ labeled: \emph{``Bayesian informative hypothesis testing for an objectof class t
 \begin{verbatim}
 ## Bayesian informative hypothesis testing for an object of class t_test:
 ## 
-##    Fit   Com   BF.u   BF.c   PMPa  PMPb 
-## H1 0.390 0.032 12.320 12.320 0.860 0.804
-## H2 0.249 0.500 0.498  0.332  0.035 0.033
-## H3 0.751 0.500 1.502  3.012  0.105 0.098
-## Hu                                 0.065
+##    Fit   Com   BF.u  BF.c  PMPa  PMPb 
+## H1 0.390 0.045 8.712 8.712 0.813 0.744
+## H2 0.249 0.500 0.498 0.332 0.047 0.043
+## H3 0.751 0.500 1.502 3.012 0.140 0.128
+## Hu                               0.085
 ## 
 ## Hypotheses:
 ##   H1: x=30
@@ -3343,12 +3451,6 @@ Load the \texttt{numDeriv} package which will be used to compute the covariance 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(numDeriv)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \CommentTok{\# make a factor of the variable sex}
 \NormalTok{sesamesim}\SpecialCharTok{$}\NormalTok{sex }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(sesamesim}\SpecialCharTok{$}\NormalTok{sex)}
 \CommentTok{\# center the covariate age}
@@ -3363,8 +3465,21 @@ Load the \texttt{numDeriv} package which will be used to compute the covariance 
   Execute the statistical analysis:
 \end{enumerate}
 
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Per group the sample size used for estimation of the parameters
+\end{enumerate}
+
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# determine sample size per sex group}
+\CommentTok{\# (in case of missing values in the variables used, the command}
+\CommentTok{\# below has to be modified such that only the cases without}
+\CommentTok{\# missing values are counted)}
+\NormalTok{ngroup }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(sesamesim}\SpecialCharTok{$}\NormalTok{sex)}
 \CommentTok{\# execute the logistic regression, {-}1 ensures that the coefficients}
 \CommentTok{\# for boys and girl are estimated adjusted for the covariate age}
 \NormalTok{anal }\OtherTok{\textless{}{-}} \FunctionTok{glm}\NormalTok{(viewenc }\SpecialCharTok{\textasciitilde{}}\NormalTok{ sex }\SpecialCharTok{+}\NormalTok{ age }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{, }\AttributeTok{family=}\NormalTok{binomial, }\AttributeTok{data=}\NormalTok{sesamesim)}
@@ -3375,12 +3490,13 @@ Load the \texttt{numDeriv} package which will be used to compute the covariance 
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  A vector containing estimates of the parameters:
+  A vector containing estimates of the parameters and add the names:
 \end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{estimates }\OtherTok{\textless{}{-}}\FunctionTok{coef}\NormalTok{(anal)}
+\FunctionTok{names}\NormalTok{(estimates) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"boys"}\NormalTok{, }\StringTok{"girls"}\NormalTok{, }\StringTok{"age"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3407,7 +3523,6 @@ Use \texttt{numDeriv} to compute the Hessian matrix and subsequently the covaria
 \NormalTok{f }\OtherTok{\textless{}{-}} \DecValTok{1}
 \NormalTok{f[}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ estimates[}\DecValTok{1}\NormalTok{] }\CommentTok{\# the regression coefficient of boys}
 \NormalTok{f[}\DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ estimates[}\DecValTok{3}\NormalTok{] }\CommentTok{\# the regression coefficient of age}
-\CommentTok{\#}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3415,21 +3530,19 @@ Within the for loop below the log likelihood of the logistic regression model is
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#logist1 \textless{}{-} function(x)\{}
-  \CommentTok{\#out \textless{}{-} 0}
-  \CommentTok{\#for (i in 1:ngroup[1])\{}
-   \CommentTok{\# out \textless{}{-} out + data[i,3]*(x[1] + x[2]*data[i,2]) {-} log (1 +}
-   \CommentTok{\# exp(x[1] + x[2]*data[i,2]))}
- \CommentTok{\# \}}
- \CommentTok{\# return(out)}
-\CommentTok{\#\}}
-
-\CommentTok{\#hes1 \textless{}{-} hessian(func=logist1, x=f)}
-
+\NormalTok{logist1 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x)\{}
+\NormalTok{  out }\OtherTok{\textless{}{-}} \DecValTok{0}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{ngroup[}\DecValTok{1}\NormalTok{])\{}
+\NormalTok{    out }\OtherTok{\textless{}{-}}\NormalTok{ out }\SpecialCharTok{+}\NormalTok{ data[i,}\DecValTok{3}\NormalTok{]}\SpecialCharTok{*}\NormalTok{(x[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ x[}\DecValTok{2}\NormalTok{]}\SpecialCharTok{*}\NormalTok{data[i,}\DecValTok{2}\NormalTok{]) }\SpecialCharTok{{-}} \FunctionTok{log}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}
+    \FunctionTok{exp}\NormalTok{(x[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ x[}\DecValTok{2}\NormalTok{]}\SpecialCharTok{*}\NormalTok{data[i,}\DecValTok{2}\NormalTok{]))}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(out)}
+\NormalTok{\}}
+\NormalTok{ngroup }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(sesamesim}\SpecialCharTok{$}\NormalTok{sex)}
+\NormalTok{hes1 }\OtherTok{\textless{}{-}} \FunctionTok{hessian}\NormalTok{(}\AttributeTok{func=}\NormalTok{logist1, }\AttributeTok{x=}\NormalTok{f)}
 \CommentTok{\# multiply with {-}1 and invert to obtain the covariance matrix for the}
 \CommentTok{\# first group}
-\CommentTok{\#cov1 \textless{}{-} {-}1 * solve(hes1)}
-\CommentTok{\#}
+\NormalTok{cov1 }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\DecValTok{1} \SpecialCharTok{*} \FunctionTok{solve}\NormalTok{(hes1)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3441,26 +3554,26 @@ Within the for loop below the log likelihood of the logistic regression model is
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#data \textless{}{-} subset(cbind(sesamesim$sex,sesamesim$age,sesamesim$viewenc),}
-\CommentTok{\#sesamesim$sex==2)}
-\CommentTok{\#f[1] \textless{}{-} estimates[2] \# the regression coefficient of girls}
-\CommentTok{\#f[2] \textless{}{-} estimates[3] \# the regression coefficient of age}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(sesamesim}\SpecialCharTok{$}\NormalTok{sex,sesamesim}\SpecialCharTok{$}\NormalTok{age,sesamesim}\SpecialCharTok{$}\NormalTok{viewenc),}
+\NormalTok{sesamesim}\SpecialCharTok{$}\NormalTok{sex}\SpecialCharTok{==}\DecValTok{2}\NormalTok{)}
+\NormalTok{f[}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ estimates[}\DecValTok{2}\NormalTok{] }\CommentTok{\# the regression coefficient of girls}
+\NormalTok{f[}\DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ estimates[}\DecValTok{3}\NormalTok{] }\CommentTok{\# the regression coefficient of age}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#logist2 \textless{}{-} function(x)\{}
-  \CommentTok{\#out \textless{}{-} 0}
-  \CommentTok{\#for (i in 1:ngroup[2])\{ }
-   \CommentTok{\# out \textless{}{-} out + data[i,3]*(x[1] + x[2]*data[i,2]) {-} log (1 +}
-   \CommentTok{\# exp(x[1] + x[2]*data[i,2]))}
- \CommentTok{\# \}}
- \CommentTok{\# return(out)}
-\CommentTok{\#\}}
-\CommentTok{\#hes2 \textless{}{-} hessian(func=logist2, x=f)}
+\NormalTok{logist2 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x)\{}
+\NormalTok{  out }\OtherTok{\textless{}{-}} \DecValTok{0}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{ngroup[}\DecValTok{2}\NormalTok{])\{ }
+\NormalTok{    out }\OtherTok{\textless{}{-}}\NormalTok{ out }\SpecialCharTok{+}\NormalTok{ data[i,}\DecValTok{3}\NormalTok{]}\SpecialCharTok{*}\NormalTok{(x[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ x[}\DecValTok{2}\NormalTok{]}\SpecialCharTok{*}\NormalTok{data[i,}\DecValTok{2}\NormalTok{]) }\SpecialCharTok{{-}} \FunctionTok{log}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}
+    \FunctionTok{exp}\NormalTok{(x[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ x[}\DecValTok{2}\NormalTok{]}\SpecialCharTok{*}\NormalTok{data[i,}\DecValTok{2}\NormalTok{]))}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(out)}
+\NormalTok{\}}
+\NormalTok{hes2 }\OtherTok{\textless{}{-}} \FunctionTok{hessian}\NormalTok{(}\AttributeTok{func=}\NormalTok{logist2, }\AttributeTok{x=}\NormalTok{f)}
 \CommentTok{\# multiply with {-}1 and invert to obtain the covariance matrix}
-\CommentTok{\#cov2 \textless{}{-} {-}1 * solve(hes2)}
+\NormalTok{cov2 }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\DecValTok{1} \SpecialCharTok{*} \FunctionTok{solve}\NormalTok{(hes2)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3468,21 +3581,7 @@ Combine the covariance matrices:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#ovariance\textless{}{-}list(cov1,cov2)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi})}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  Per group the sample size used for estimation of the parameters:
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#ngroup \textless{}{-} table(sesamesim$sex)}
+\NormalTok{covariance}\OtherTok{\textless{}{-}}\FunctionTok{list}\NormalTok{(cov1,cov2)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3496,7 +3595,7 @@ Combine the covariance matrices:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#names(estimates) \textless{}{-} c("boys", "girls", "age")}
+\FunctionTok{names}\NormalTok{(estimates) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"boys"}\NormalTok{, }\StringTok{"girls"}\NormalTok{, }\StringTok{"age"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3510,9 +3609,9 @@ Combine the covariance matrices:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#set.seed(100)}
-\CommentTok{\#results \textless{}{-} bain(estimates, "boys \textless{} girls \& age \textgreater{} 0", n=ngroup,}
-\CommentTok{\#Sigma=covariance, group\_parameters=1, joint\_parameters = 1)}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\NormalTok{results }\OtherTok{\textless{}{-}} \FunctionTok{bain}\NormalTok{(estimates, }\StringTok{"boys \textless{} girls \& age \textgreater{} 0"}\NormalTok{, }\AttributeTok{n=}\NormalTok{ngroup,}
+\AttributeTok{Sigma=}\NormalTok{covariance, }\AttributeTok{group\_parameters=}\DecValTok{1}\NormalTok{, }\AttributeTok{joint\_parameters =} \DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3526,7 +3625,7 @@ Combine the covariance matrices:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#print(results)}
+\FunctionTok{print}\NormalTok{(results)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3540,7 +3639,7 @@ Combine the covariance matrices:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#summary(results, ci = 0.95)}
+\FunctionTok{summary}\NormalTok{(results, }\AttributeTok{ci =} \FloatTok{0.95}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3670,46 +3769,77 @@ Load \texttt{mice} (multiple imputation of missing data) inspect the \texttt{mic
 ##     cbind, rbind
 \end{verbatim}
 
-``Create'' missing values in four variables from the sesamesim data set:
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{misdat }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(sesamesim}\SpecialCharTok{$}\NormalTok{prenumb,sesamesim}\SpecialCharTok{$}\NormalTok{postnumb,sesamesim}\SpecialCharTok{$}\NormalTok{funumb,sesamesim}\SpecialCharTok{$}\NormalTok{peabody)}
-\FunctionTok{colnames}\NormalTok{(misdat) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"prenumb"}\NormalTok{,}\StringTok{"postnumb"}\NormalTok{,}\StringTok{"funumb"}\NormalTok{,}\StringTok{"peabody"}\NormalTok{)}
-\NormalTok{misdat }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(misdat)}
-
-\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-\NormalTok{pmis }\OtherTok{\textless{}{-}}\NormalTok{ .}\DecValTok{80}
-\CommentTok{\#}
-\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{240}\NormalTok{)\{}
-\NormalTok{  uni}\OtherTok{\textless{}{-}}\FunctionTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-  \ControlFlowTok{if}\NormalTok{ (pmis }\SpecialCharTok{\textless{}}\NormalTok{ uni) \{}
-\NormalTok{    misdat}\SpecialCharTok{$}\NormalTok{funumb[i]}\OtherTok{\textless{}{-}}\ConstantTok{NA}
-\NormalTok{  \}}
-\NormalTok{  uni}\OtherTok{\textless{}{-}}\FunctionTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-  \ControlFlowTok{if}\NormalTok{ (pmis }\SpecialCharTok{\textless{}}\NormalTok{ uni) \{}
-\NormalTok{    misdat}\SpecialCharTok{$}\NormalTok{prenumb[i]}\OtherTok{\textless{}{-}}\ConstantTok{NA}
-\NormalTok{    misdat}\SpecialCharTok{$}\NormalTok{postnumb[i]}\OtherTok{\textless{}{-}}\ConstantTok{NA}
-\NormalTok{  \}}
-\NormalTok{  uni}\OtherTok{\textless{}{-}}\FunctionTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-  \ControlFlowTok{if}\NormalTok{ (pmis }\SpecialCharTok{\textless{}}\NormalTok{ uni) \{}
-\NormalTok{    misdat}\SpecialCharTok{$}\NormalTok{peabody[i]}\OtherTok{\textless{}{-}}\ConstantTok{NA}
-\NormalTok{  \}}
-\NormalTok{\}}
-\CommentTok{\# print data summaries {-} note the missing values (NAs)}
-\FunctionTok{summary}\NormalTok{(misdat)}
+\FunctionTok{library}\NormalTok{(psych)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##     prenumb            postnumb         funumb         peabody        
-##  Min.   :-1.86095   Min.   : 0.00   Min.   : 0.00   Min.   :-2.60009  
-##  1st Qu.:-0.63654   1st Qu.:21.75   1st Qu.:17.00   1st Qu.:-0.67160  
-##  Median :-0.02433   Median :28.00   Median :33.50   Median :-0.04951  
-##  Mean   : 0.04348   Mean   :29.55   Mean   :34.17   Mean   : 0.06214  
-##  3rd Qu.: 0.68206   3rd Qu.:38.00   3rd Qu.:46.00   3rd Qu.: 0.80587  
-##  Max.   : 2.94251   Max.   :63.00   Max.   :91.00   Max.   : 2.81212  
-##  NA's   :40         NA's   :40      NA's   :50      NA's   :50
+## 
+## Attaching package: 'psych'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:lavaan':
+## 
+##     cor2cov
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(MASS)}
+\end{Highlighting}
+\end{Shaded}
+
+``Create'' missing values in four variables from the sesamesim data set:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sesamesim }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(sesamesim}\SpecialCharTok{$}\NormalTok{prenumb,sesamesim}\SpecialCharTok{$}\NormalTok{postnumb,sesamesim}\SpecialCharTok{$}\NormalTok{funumb,sesamesim}\SpecialCharTok{$}\NormalTok{peabody)}
+\FunctionTok{colnames}\NormalTok{(sesamesim) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"prenumb"}\NormalTok{,}\StringTok{"postnumb"}\NormalTok{,}\StringTok{"funumb"}\NormalTok{,}\StringTok{"peabody"}\NormalTok{)}
+\NormalTok{sesamesim }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(sesamesim)}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{pmis1}\OtherTok{\textless{}{-}}\DecValTok{1}
+\NormalTok{pmis2}\OtherTok{\textless{}{-}}\DecValTok{1}
+\NormalTok{pmis3}\OtherTok{\textless{}{-}}\DecValTok{1}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{240}\NormalTok{)\{}
+\NormalTok{  pmis1[i] }\OtherTok{\textless{}{-}}\NormalTok{ .}\DecValTok{80}
+\NormalTok{  pmis2[i]}\OtherTok{\textless{}{-}}\NormalTok{ .}\DecValTok{80}
+\NormalTok{  pmis3[i]}\OtherTok{\textless{}{-}}\NormalTok{ .}\DecValTok{80}
+
+\NormalTok{  uni}\OtherTok{\textless{}{-}}\FunctionTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+  \ControlFlowTok{if}\NormalTok{ (pmis1[i] }\SpecialCharTok{\textless{}}\NormalTok{ uni) \{}
+\NormalTok{    sesamesim}\SpecialCharTok{$}\NormalTok{funumb[i]}\OtherTok{\textless{}{-}}\ConstantTok{NaN}
+\NormalTok{  \}}
+\NormalTok{  uni}\OtherTok{\textless{}{-}}\FunctionTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+  \ControlFlowTok{if}\NormalTok{ (pmis2[i] }\SpecialCharTok{\textless{}}\NormalTok{ uni) \{}
+\NormalTok{    sesamesim}\SpecialCharTok{$}\NormalTok{prenumb[i]}\OtherTok{\textless{}{-}}\ConstantTok{NaN}
+\NormalTok{    sesamesim}\SpecialCharTok{$}\NormalTok{postnumb[i]}\OtherTok{\textless{}{-}}\ConstantTok{NaN}
+\NormalTok{  \}}
+\NormalTok{  uni}\OtherTok{\textless{}{-}}\FunctionTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+  \ControlFlowTok{if}\NormalTok{ (pmis3[i] }\SpecialCharTok{\textless{}}\NormalTok{ uni) \{}
+\NormalTok{    sesamesim}\SpecialCharTok{$}\NormalTok{peabody[i]}\OtherTok{\textless{}{-}}\ConstantTok{NaN}
+\NormalTok{  \}}
+\NormalTok{\}}
+\CommentTok{\# print data summaries {-} note the missing values (NAs)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{describe}\NormalTok{(sesamesim))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          vars   n  mean    sd median trimmed   mad   min   max range skew
+## prenumb     1 200  0.04  0.98  -0.02   -0.01  0.98 -1.86  2.94  4.80 0.53
+## postnumb    2 200 29.55 12.70  28.00   29.30 11.86  0.00 63.00 63.00 0.23
+## funumb      3 190 34.17 20.16  33.50   33.12 21.50  0.00 91.00 91.00 0.38
+## peabody     4 190  0.06  1.04  -0.05    0.04  1.11 -2.60  2.81  5.41 0.18
+##          kurtosis   se
+## prenumb     -0.02 0.07
+## postnumb    -0.21 0.90
+## funumb      -0.41 1.46
+## peabody     -0.38 0.08
 \end{verbatim}
 
 \begin{enumerate}
@@ -3723,7 +3853,10 @@ Load \texttt{mice} (multiple imputation of missing data) inspect the \texttt{mic
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{M }\OtherTok{\textless{}{-}} \DecValTok{1000} 
-\NormalTok{out }\OtherTok{\textless{}{-}} \FunctionTok{mice}\NormalTok{(}\AttributeTok{data =}\NormalTok{ misdat, }\AttributeTok{m =}\NormalTok{ M, }\AttributeTok{seed=}\DecValTok{999}\NormalTok{, }\AttributeTok{meth=}\FunctionTok{c}\NormalTok{(}\StringTok{"norm"}\NormalTok{,}\StringTok{"norm"}\NormalTok{,}\StringTok{"norm"}\NormalTok{,}\StringTok{"norm"}\NormalTok{), }\AttributeTok{diagnostics =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{printFlag =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{out }\OtherTok{\textless{}{-}} \FunctionTok{mice}\NormalTok{(}\AttributeTok{data =}\NormalTok{ sesamesim, }\AttributeTok{m =}\NormalTok{ M, }\AttributeTok{seed=}\DecValTok{999}\NormalTok{, }\AttributeTok{meth=}\FunctionTok{c}\NormalTok{(}\StringTok{"norm"}\NormalTok{,}\StringTok{"norm"}\NormalTok{,}\StringTok{"norm"}\NormalTok{,}\StringTok{"norm"}\NormalTok{), }\AttributeTok{diagnostics =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{printFlag =} \ConstantTok{FALSE}\NormalTok{)}
+\CommentTok{\# create matrices in which 1000 vectors with estimates can be stored and in which a covariance matrix can be stored}
+\NormalTok{mulest }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow=}\DecValTok{1000}\NormalTok{,}\AttributeTok{ncol=}\DecValTok{2}\NormalTok{)}
+\NormalTok{covwithin }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow=}\DecValTok{2}\NormalTok{,}\AttributeTok{ncol=}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3732,18 +3865,13 @@ Load \texttt{mice} (multiple imputation of missing data) inspect the \texttt{mic
 \setcounter{enumi}{1}
 \tightlist
 \item
-  Create vectors in which 1000 fits and complexities can be stored for each
-  of two hypotheses and their complement:
+  Create matrices in which 1000 vectors with estimates can be stored and in which a covariance matrix can be stored:
 \end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{fits1 }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"numeric"}\NormalTok{,}\DecValTok{1000}\NormalTok{)}
-\NormalTok{compls1 }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"numeric"}\NormalTok{,}\DecValTok{1000}\NormalTok{)}
-\NormalTok{fits2 }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"numeric"}\NormalTok{,}\DecValTok{1000}\NormalTok{)}
-\NormalTok{compls2 }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"numeric"}\NormalTok{,}\DecValTok{1000}\NormalTok{)}
-\NormalTok{fitscomplement }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"numeric"}\NormalTok{,}\DecValTok{1000}\NormalTok{)}
-\NormalTok{complscomplement }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"numeric"}\NormalTok{,}\DecValTok{1000}\NormalTok{)}
+\NormalTok{mulest }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow=}\DecValTok{1000}\NormalTok{,}\AttributeTok{ncol=}\DecValTok{2}\NormalTok{)}
+\NormalTok{covwithin }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow=}\DecValTok{2}\NormalTok{,}\AttributeTok{ncol=}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3752,21 +3880,15 @@ Load \texttt{mice} (multiple imputation of missing data) inspect the \texttt{mic
 \setcounter{enumi}{2}
 \tightlist
 \item
-  Analyse each imputed data set with \texttt{lm} and \texttt{bain}, store the resulting fits and complexities:
+  Execute 1000 multiple regressions using the imputed data matrices and store the estimates of only the regression coefficients of \texttt{funumb} on \texttt{prenumb} and \texttt{postnumband}and the average of the 1000 covariance matrices. See \protect\hyperlink{ref-hoijtink2019computing}{Hoijtink, Gu, Mulder, \& Rosseel} (\protect\hyperlink{ref-hoijtink2019computing}{2019}) for an explanation of the latter.
 \end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{set.seed}\NormalTok{(}\DecValTok{100}\NormalTok{)}
 \ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{M) \{}
-\NormalTok{regr }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(funumb}\SpecialCharTok{\textasciitilde{}}\NormalTok{prenumb}\SpecialCharTok{+}\NormalTok{postnumb,}\FunctionTok{complete}\NormalTok{(out,i))}
-\NormalTok{result }\OtherTok{\textless{}{-}} \FunctionTok{bain}\NormalTok{(regr,}\StringTok{"prenumb=0 \& postnumb=0;prenumb\textgreater{}0 \& postnumb\textgreater{}0"}\NormalTok{)  }
-\NormalTok{fits1[i]}\OtherTok{\textless{}{-}}\NormalTok{result}\SpecialCharTok{$}\NormalTok{fit}\SpecialCharTok{$}\NormalTok{Fit[}\DecValTok{1}\NormalTok{] }
-\NormalTok{compls1[i]}\OtherTok{\textless{}{-}}\NormalTok{result}\SpecialCharTok{$}\NormalTok{fit}\SpecialCharTok{$}\NormalTok{Com[}\DecValTok{1}\NormalTok{]}
-\NormalTok{fits2[i]}\OtherTok{\textless{}{-}}\NormalTok{result}\SpecialCharTok{$}\NormalTok{fit}\SpecialCharTok{$}\NormalTok{Fit[}\DecValTok{2}\NormalTok{] }
-\NormalTok{compls2[i]}\OtherTok{\textless{}{-}}\NormalTok{result}\SpecialCharTok{$}\NormalTok{fit}\SpecialCharTok{$}\NormalTok{Com[}\DecValTok{2}\NormalTok{]}
-\NormalTok{fitscomplement[i]}\OtherTok{\textless{}{-}}\NormalTok{result}\SpecialCharTok{$}\NormalTok{fit}\SpecialCharTok{$}\NormalTok{Fit[}\DecValTok{4}\NormalTok{] }
-\NormalTok{complscomplement[i]}\OtherTok{\textless{}{-}}\NormalTok{result}\SpecialCharTok{$}\NormalTok{fit}\SpecialCharTok{$}\NormalTok{Com[}\DecValTok{4}\NormalTok{]}
+\NormalTok{  mulres }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(funumb}\SpecialCharTok{\textasciitilde{}}\NormalTok{prenumb}\SpecialCharTok{+}\NormalTok{postnumb,}\FunctionTok{complete}\NormalTok{(out,i))}
+\NormalTok{  mulest[i,]}\OtherTok{\textless{}{-}}\FunctionTok{coef}\NormalTok{(mulres)[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{]}
+\NormalTok{  covwithin}\OtherTok{\textless{}{-}}\NormalTok{covwithin }\SpecialCharTok{+} \DecValTok{1}\SpecialCharTok{/}\NormalTok{M }\SpecialCharTok{*} \FunctionTok{vcov}\NormalTok{(mulres)[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{,}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{]}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
@@ -3776,39 +3898,97 @@ Load \texttt{mice} (multiple imputation of missing data) inspect the \texttt{mic
 \setcounter{enumi}{3}
 \tightlist
 \item
-  Compute the Bayes factor from the imputed fits and complexities see Equation 23 in \protect\hyperlink{ref-hoijtink2019computing}{Hoijtink, Gu, Mulder, \& Rosseel} (\protect\hyperlink{ref-hoijtink2019computing}{2019}):
+  Compute the average of the estimates and assign names, the between and total covariance matrix. See \protect\hyperlink{ref-hoijtink2019computing}{Hoijtink, Gu, Mulder, \& Rosseel} (\protect\hyperlink{ref-hoijtink2019computing}{2019}) for an explanation.
 \end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{BF1u }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(fits1)}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(compls1)}
-\NormalTok{BF2u }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(fits2)}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(compls2)}
-\NormalTok{BFcomplementu }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(fitscomplement)}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(complscomplement)}
-\NormalTok{BF }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(BF1u, BF2u, BFcomplementu)}
-\NormalTok{BF}
+\NormalTok{estimates }\OtherTok{\textless{}{-}} \FunctionTok{colMeans}\NormalTok{(mulest)}
+\FunctionTok{names}\NormalTok{(estimates) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"prenumb"}\NormalTok{, }\StringTok{"postnumb"}\NormalTok{)}
+\NormalTok{covbetween }\OtherTok{\textless{}{-}} \FunctionTok{cov}\NormalTok{(mulest)}
+\NormalTok{covariance }\OtherTok{\textless{}{-}}\NormalTok{ covwithin }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{+}\DecValTok{1}\SpecialCharTok{/}\NormalTok{M)}\SpecialCharTok{*}\NormalTok{covbetween}
+\CommentTok{\# determine the sample size}
+\NormalTok{samp }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(sesamesim)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{HERE}
+5) compute the effective sample size. See \protect\hyperlink{ref-hoijtink2019computing}{Hoijtink, Gu, Mulder, \& Rosseel} (\protect\hyperlink{ref-hoijtink2019computing}{2019}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nucom}\OtherTok{\textless{}{-}}\NormalTok{samp}\SpecialCharTok{{-}}\FunctionTok{length}\NormalTok{(estimates)}
+\NormalTok{lam }\OtherTok{\textless{}{-}}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{+}\DecValTok{1}\SpecialCharTok{/}\NormalTok{M)}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\FunctionTok{length}\NormalTok{(estimates))}\SpecialCharTok{*} \FunctionTok{sum}\NormalTok{(}\FunctionTok{diag}\NormalTok{(covbetween }\SpecialCharTok{\%*\%} \FunctionTok{ginv}\NormalTok{(covariance)))}
+\NormalTok{nuold}\OtherTok{\textless{}{-}}\NormalTok{(M}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(lam}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\NormalTok{nuobs}\OtherTok{\textless{}{-}}\NormalTok{(nucom}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(nucom}\SpecialCharTok{+}\DecValTok{3}\NormalTok{)}\SpecialCharTok{*}\NormalTok{nucom}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{lam)}
+\NormalTok{nu}\OtherTok{\textless{}{-}}\NormalTok{ nuold}\SpecialCharTok{*}\NormalTok{nuobs}\SpecialCharTok{/}\NormalTok{(nuold}\SpecialCharTok{+}\NormalTok{nuobs)}
+\NormalTok{fracmis }\OtherTok{\textless{}{-}}\NormalTok{ (nu}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(nu}\SpecialCharTok{+}\DecValTok{3}\NormalTok{)}\SpecialCharTok{*}\NormalTok{lam }\SpecialCharTok{+} \DecValTok{2}\SpecialCharTok{/}\NormalTok{(nu}\SpecialCharTok{+}\DecValTok{3}\NormalTok{)}
+\NormalTok{neff}\OtherTok{\textless{}{-}}\NormalTok{samp}\SpecialCharTok{{-}}\NormalTok{samp}\SpecialCharTok{*}\NormalTok{fracmis}
+\NormalTok{covariance}\OtherTok{\textless{}{-}}\FunctionTok{list}\NormalTok{(covariance)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Use \texttt{bain}:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\NormalTok{results }\OtherTok{\textless{}{-}} \FunctionTok{bain}\NormalTok{(estimates,}\StringTok{"prenumb=postnumb=0"}\NormalTok{,}\AttributeTok{n=}\NormalTok{neff,}\AttributeTok{Sigma=}\NormalTok{covariance,}\AttributeTok{group\_parameters=}\DecValTok{2}\NormalTok{,}\AttributeTok{joint\_parameters =} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Display the results:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(results)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 9.442939e-15 1.094018e+00           NA
+## Bayesian informative hypothesis testing for an object of class numeric:
+## 
+##    Fit   Com   BF.u  BF.c  PMPa  PMPb 
+## H1 0.000 0.010 0.000 0.000 1.000 0.000
+## Hu                               1.000
+## 
+## Hypotheses:
+##   H1: prenumb=postnumb=0
+## 
+## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.
 \end{verbatim}
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\setcounter{enumi}{4}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
 \tightlist
 \item
-  Compute PMPc:
+  Obtain the descriptive table:
 \end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{PMPcH1 }\OtherTok{\textless{}{-}}\NormalTok{ BF1u}\SpecialCharTok{/}\NormalTok{(BF1u }\SpecialCharTok{+}\NormalTok{ BF2u }\SpecialCharTok{+}\NormalTok{ BFcomplementu)}
-\NormalTok{PMPcH2 }\OtherTok{\textless{}{-}}\NormalTok{ BF2u}\SpecialCharTok{/}\NormalTok{(BF1u }\SpecialCharTok{+}\NormalTok{ BF2u }\SpecialCharTok{+}\NormalTok{ BFcomplementu)}
-\NormalTok{PMPcHcomplement }\OtherTok{\textless{}{-}}\NormalTok{ BFcomplementu}\SpecialCharTok{/}\NormalTok{(BF1u }\SpecialCharTok{+}\NormalTok{ BF2u }\SpecialCharTok{+}\NormalTok{ BFcomplementu)}
-\NormalTok{PMPc }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(PMPcH1, PMPcH2, PMPcHcomplement)}
+\FunctionTok{summary}\NormalTok{(results, }\AttributeTok{ci =} \FloatTok{0.95}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+##   Parameter        n   Estimate         lb       ub
+## 1   prenumb 172.0185 -1.8492141 -5.2953273 1.596899
+## 2  postnumb 172.0185  0.9692542  0.6928871 1.245621
+\end{verbatim}
 
 \hypertarget{sensitivity-analysis-using-bain}{%
 \chapter{\texorpdfstring{Sensitivity analysis using \texttt{bain}}{Sensitivity analysis using bain}}\label{sensitivity-analysis-using-bain}}
@@ -3823,173 +4003,101 @@ Load \texttt{bain}:
 
 Please see \protect\hyperlink{ref-hoijtink2019tutorial}{Hoijtink, Mulder, Lissa, \& Gu} (\protect\hyperlink{ref-hoijtink2019tutorial}{2019}) for further elaborations.
 
-\hypertarget{an-example-using-anova}{%
-\section{An example using ANOVA}\label{an-example-using-anova}}
-
 Note that, most the code below can be replaced by a call to the function \texttt{bain\_sensitivity}. See the help file for this function for further instructions (call \texttt{?bain\_sensitivity}).
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\tightlist
-\item
-  Make a factor of variable site:
-\end{enumerate}
+\hypertarget{the-t-test-example-from-3.1.1}{%
+\section{\texorpdfstring{The \texttt{t-test} example from 3.1.1}{The t-test example from 3.1.1}}\label{the-t-test-example-from-3.1.1}}
+
+First, we test the same hypotheses as in 3.1.1 using the minimal fraction (\emph{J=1}) which is by default implemented in \texttt{bain}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{sesamesim}\SpecialCharTok{$}\NormalTok{site }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(sesamesim}\SpecialCharTok{$}\NormalTok{site)}
+\CommentTok{\# set a seed value}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\CommentTok{\# test hypotheses with bain. The names of the means are x and y.}
+\NormalTok{results }\OtherTok{\textless{}{-}} \FunctionTok{bain}\NormalTok{(ttest, }\StringTok{"x = y; x \textgreater{} y; x \textless{} y"}\NormalTok{, }\AttributeTok{fraction =} \DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  Execute an analysis of variance using \texttt{lm()} which, due to the -1, returns estimates of the means per group:
-\end{enumerate}
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{anov }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(postnumb}\SpecialCharTok{\textasciitilde{}}\NormalTok{site}\DecValTok{{-}1}\NormalTok{,sesamesim)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  Set a seed value \& call \texttt{bain}:
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{set.seed}\NormalTok{(}\DecValTok{100}\NormalTok{)}\CommentTok{\# test hypotheses with bain}
-\NormalTok{results1 }\OtherTok{\textless{}{-}} \FunctionTok{bain}\NormalTok{(anov, }\StringTok{"site1=site2=site3=site4=site5; site2\textgreater{}site5\textgreater{}site1\textgreater{}}
-\StringTok{site3\textgreater{}site4"}\NormalTok{, }\AttributeTok{fraction =} \DecValTok{1}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\setcounter{enumi}{3}
-\tightlist
-\item
-  Print the results:
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{print}\NormalTok{(results1)}
+\FunctionTok{print}\NormalTok{(results)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Bayesian informative hypothesis testing for an object of class lm (ANOVA):
+## Bayesian informative hypothesis testing for an object of class t_test:
 ## 
 ##    Fit   Com   BF.u   BF.c   PMPa  PMPb 
-## H1 0.000 0.000 0.000  0.000  0.000 0.000
-## H2 0.121 0.008 14.559 16.428 1.000 0.936
-## Hu                                 0.064
+## H1 0.183 0.016 11.583 11.583 0.853 0.794
+## H2 0.777 0.500 1.554  3.481  0.114 0.107
+## H3 0.223 0.500 0.446  0.287  0.033 0.031
+## Hu                                 0.069
 ## 
 ## Hypotheses:
-##   H1: site1=site2=site3=site4=site5
-##   H2: site2>site5>site1>site3>site4
+##   H1: x=y
+##   H2: x>y
+##   H3: x<y
 ## 
 ## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.
 \end{verbatim}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\setcounter{enumi}{4}
-\tightlist
-\item
-  Summary: estimates and credibility intervals:
-\end{enumerate}
+Now we execute the sensitivity analysis by interactively changing the \texttt{fraction} argument to be equal to 2 and 3, respectively:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{summary}\NormalTok{(results1, }\AttributeTok{ci =} \FloatTok{0.95}\NormalTok{)}
+\NormalTok{results2 }\OtherTok{\textless{}{-}} \FunctionTok{bain}\NormalTok{(ttest, }\StringTok{"x = y; x \textgreater{} y; x \textless{} y"}\NormalTok{, }\AttributeTok{fraction =} \DecValTok{2}\NormalTok{)}
+\NormalTok{results3 }\OtherTok{\textless{}{-}} \FunctionTok{bain}\NormalTok{(ttest, }\StringTok{"x = y; x \textgreater{} y; x \textless{} y"}\NormalTok{, }\AttributeTok{fraction =} \DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-##   Parameter  n Estimate       lb       ub
-## 1     site1 60 29.66667 26.82991 32.50343
-## 2     site2 55 38.98182 36.01892 41.94472
-## 3     site3 64 23.18750 20.44082 25.93418
-## 4     site4 43 25.32558 21.97466 28.67650
-## 5     site5 18 31.72222 26.54303 36.90141
-\end{verbatim}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\setcounter{enumi}{5}
-\tightlist
-\item
-  Execute a \textbf{sensitivity analysis}:
-\end{enumerate}
-
-\begin{itemize}
-\tightlist
-\item
-  Using twice the minimal fraction:
-\end{itemize}
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{set.seed}\NormalTok{(}\DecValTok{100}\NormalTok{)}
-\NormalTok{results2 }\OtherTok{\textless{}{-}} \FunctionTok{bain}\NormalTok{(anov, }\StringTok{"site1=site2=site3=site4=site5; site2\textgreater{}site5\textgreater{}site1\textgreater{}}
-\StringTok{site3\textgreater{}site4"}\NormalTok{,}\AttributeTok{fraction =} \DecValTok{2}\NormalTok{)}
 \FunctionTok{print}\NormalTok{(results2)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Bayesian informative hypothesis testing for an object of class lm (ANOVA):
+## Bayesian informative hypothesis testing for an object of class t_test:
 ## 
-##    Fit   Com   BF.u   BF.c   PMPa  PMPb 
-## H1 0.000 0.000 0.000  0.000  0.000 0.000
-## H2 0.121 0.008 14.559 16.428 1.000 0.936
-## Hu                                 0.064
+##    Fit   Com   BF.u  BF.c  PMPa  PMPb 
+## H1 0.183 0.022 8.190 8.190 0.804 0.732
+## H2 0.777 0.500 1.554 3.481 0.152 0.139
+## H3 0.223 0.500 0.446 0.287 0.044 0.040
+## Hu                               0.089
 ## 
 ## Hypotheses:
-##   H1: site1=site2=site3=site4=site5
-##   H2: site2>site5>site1>site3>site4
+##   H1: x=y
+##   H2: x>y
+##   H3: x<y
 ## 
 ## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.
 \end{verbatim}
 
-\begin{itemize}
-\tightlist
-\item
-  Using three times the minimal fraction
-\end{itemize}
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{set.seed}\NormalTok{(}\DecValTok{100}\NormalTok{)}
-\NormalTok{results3 }\OtherTok{\textless{}{-}} \FunctionTok{bain}\NormalTok{(anov, }\StringTok{"site1=site2=site3=site4=site5; site2\textgreater{}site5\textgreater{}site1\textgreater{}}
-\StringTok{site3\textgreater{}site4"}\NormalTok{,}\AttributeTok{fraction =} \DecValTok{3}\NormalTok{)}
 \FunctionTok{print}\NormalTok{(results3)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Bayesian informative hypothesis testing for an object of class lm (ANOVA):
+## Bayesian informative hypothesis testing for an object of class t_test:
 ## 
-##    Fit   Com   BF.u   BF.c   PMPa  PMPb 
-## H1 0.000 0.000 0.000  0.000  0.000 0.000
-## H2 0.121 0.008 14.559 16.428 1.000 0.936
-## Hu                                 0.064
+##    Fit   Com   BF.u  BF.c  PMPa  PMPb 
+## H1 0.183 0.027 6.687 6.687 0.770 0.690
+## H2 0.777 0.500 1.554 3.481 0.179 0.160
+## H3 0.223 0.500 0.446 0.287 0.051 0.046
+## Hu                               0.103
 ## 
 ## Hypotheses:
-##   H1: site1=site2=site3=site4=site5
-##   H2: site2>site5>site1>site3>site4
+##   H1: x=y
+##   H2: x>y
+##   H3: x<y
 ## 
 ## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.
 \end{verbatim}
+
+As it is clear by looking at the results, the \(BF_{0u}\) changes from 11.58 when \texttt{fraction} = 1 to 8.19 and 6.68, when \texttt{fraction} = 2 and 3, respectively. This stems from the fact that the value of the \textbf{complexity} (which is the proportion of the prior distribution that is supported by the (\emph{null}) hypothesis at hand) changes, thus changing the resulting BF's.
 
 \hypertarget{references}{%
 \chapter*{References}\label{references}}

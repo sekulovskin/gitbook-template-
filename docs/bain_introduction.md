@@ -201,30 +201,39 @@ only be interpreted if repeated analyses using different seeds
 #### Example output
 
 The following example is aimed at illustrating the output from `bain`. The specifics on how to actually use `bain` for testing hypotheses about the parameters of different statistical models are given in the next chapter.
-```{r include=FALSE}
-library(bain)
-regr <- lm(postnumb ~ age + peabody + prenumb,sesamesim)
-```
+
 
 In this example we will use `bain` to test the following two (informative) hypotheses concerning the parameters of a multiple linear regression model, with three (continuous) predictors: 
  
  - $H_1: \beta_1 > 0;\; \beta_2 > 0;\; \beta_3 >0$ 
  - $H_2: \beta_1 = \beta_2 < \beta_3$ 
  
-```{r include=FALSE}
-set.seed(100)
-results<-bain(regr, "age > 0 & peab > 0 & pre > 0; age = peab < pre ",
-              standardize = TRUE)
-```
+
 
 (1) The default output:
-```{r}
+
+```r
 print(results)
+```
+
+```
+## Bayesian informative hypothesis testing for an object of class lm (continuous predictors):
+## 
+##    Fit   Com   BF.u   BF.c    PMPa  PMPb 
+## H1 0.871 0.032 27.295 204.167 0.747 0.727
+## H2 2.637 0.285 9.247  9.247   0.253 0.246
+## Hu                                  0.027
+## 
+## Hypotheses:
+##   H1: age>0&peabody>0&prenumb>0
+##   H2: age=peabody<prenumb
+## 
+## Note: BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. BF.c denotes the Bayes factor of the hypothesis at hand versus its complement.
 ```
 The output consists of several parts:
  
  (a) On the top, it is stated from which type of `R` object the parameter estimates come from;
- (b) The most important part of the output are the results from `bain` presented in the middle. Here, for each hypothesis, the fit, complexity, the BF of the hypothesis against the unconstrained, the BF of the hypothesis against it's compliment, and the posterior model probabilities are printed in each row. For example, for $H_1 =\beta_1 > 0;\; \beta_2 > 0;\; \beta_3 >0$, the fit and complexity are equal to 0.871 and 0.032, respectively, resulting in a $BF_{1u}$ = 27.3. The value for $BF_{1u}$ suggests that $H_1$ is 27 times as likely compared to $H_u$. The value for `PMPa` suggests that the posterior probability of $H_1$ *given* the data is around 0.75, assuming equal prior probabilities. The value for `PMPb` suggests that the posterior probability of $H_1 + H_u$  *given* the data is around 0.73, assuming equal prior probabilities. If we would like to obtain the BF for $H_1$ against $H_2$ ($BF_{12}$), then we just need to take the ratio of the two BF's against the unconstrained hypothesis. In this case, $$BF_{12} = \frac{27.3}{9.2} \approx 3$$
+ (b) The most important part of the output are the results from `bain` presented in the middle. Here, for each hypothesis, the fit, complexity, the BF of the hypothesis against the unconstrained, the BF of the hypothesis against it's compliment, and the posterior model probabilities are printed in each row. For example for $H_1 =\beta_1 > 0;\; \beta_2 > 0;\; \beta_3 >0$, the fit and complexity are equal to 0.871 and 0.032, respectively, resulting in a $BF_{1u}$ = 27.3. The value for $BF_{1u}$ suggests that $H_1$ is 27 times as likely compared to $H_u$. The value for `PMPa` suggests that the posterior probability of $H_1$ *given* the data is around 0.75, assuming equal prior probabilities. The value for `PMPb` suggests that the posterior probability of $H_1 + H_u$  *given* the data is around 0.73, assuming equal prior probabilities. If we would like to obtain the BF for $H_1$ against $H_2$ ($BF_{12}$), then we just need to take the ratio of the two BF's against the unconstrained hypothesis. In this case, $$BF_{12} = \frac{27.3}{9.2} \approx 3$$
  
  which means that the support in the data is 3 times larger for $H_1$ compared to $H_2$;
  
@@ -232,12 +241,32 @@ The output consists of several parts:
  (d) The output ends with a note explaining the difference between the two types BF's printed in the main part of the results (b).
  
 (2) Descriptive matrix:
-```{r}
+
+```r
 summary(results)
 ```
 
+```
+##   Parameter   n   Estimate          lb        ub
+## 1       age 240 0.05797594 -0.04043979 0.1563917
+## 2   peabody 240 0.14781779  0.03457188 0.2610637
+## 3   prenumb 240 0.56740695  0.46067277 0.6741411
+```
+
 (3) Obtaining the separate values contained within the `results` object. Here we only present how to obtain the value for the fit, of course, as mentioned above different values contained within the `results` object can be obtained by changing what comes after the `$` in the code below:  
-```{r}
+
+```r
 results$fit
+```
+
+```
+##      Fit_eq    Com_eq    Fit_in     Com_in       Fit        Com         BF
+## H1 1.000000 1.0000000 0.8705764 0.03189549 0.8705764 0.03189549 204.167441
+## H2 2.636926 0.5703344 1.0000000 0.50000000 2.6369262 0.28516720   9.246948
+## Hu       NA        NA        NA         NA        NA         NA         NA
+##         PMPa       PMPb      BF.u       BF.c
+## H1 0.7469474 0.72705089 27.294657 204.167441
+## H2 0.2530526 0.24631200  9.246948   9.246948
+## Hu        NA 0.02663711        NA         NA
 ```
 
